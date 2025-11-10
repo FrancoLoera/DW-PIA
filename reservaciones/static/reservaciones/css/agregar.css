@@ -1,0 +1,114 @@
+/* === ESTILO GENERAL === */
+body {
+  background-color: #f5f5f7;
+  font-family: "Poppins", sans-serif;
+  color: #333;
+}
+
+/* === CONTENEDOR PRINCIPAL === */
+.container {
+  background-color: #ffffff;
+  border-radius: 18px;
+  padding: 40px;
+  margin-top: 50px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  max-width: 700px;
+}
+
+.container h2 {
+  color: #6a1b9a;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.container h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #ab47bc;
+  border-radius: 3px;
+  margin: 10px auto 0;
+}
+
+/* === FORMULARIO === */
+form {
+  margin-top: 20px;
+}
+
+label {
+  font-weight: 500;
+  color: #4a148c;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+  border: 1.5px solid #d6c2f0;
+  border-radius: 10px;
+  padding: 10px 12px;
+  width: 100%;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #ab47bc;
+  box-shadow: 0 0 8px rgba(171, 71, 188, 0.4);
+  background-color: #fff;
+}
+
+/* === BOTONES === */
+button,
+a.btn {
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+button.btn-success {
+  background-color: #8e24aa;
+  border: none;
+  color: #fff;
+}
+
+button.btn-success:hover {
+  background-color: #6a1b9a;
+  transform: translateY(-2px);
+}
+
+a.btn-secondary {
+  background-color: #ddd;
+  border: none;
+  color: #333;
+}
+
+a.btn-secondary:hover {
+  background-color: #ccc;
+  transform: translateY(-2px);
+}
+
+/* === EFECTO DE SOMBRA INTERIOR === */
+.container {
+  border: 1px solid #e0d7f3;
+  background: linear-gradient(180deg, #ffffff 0%, #f8f5fc 100%);
+}
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #c77dff;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #b25dff;
+}

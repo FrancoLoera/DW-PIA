@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Consultar Reservaciones{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'reservaciones/css/consultar.css' %}">
+
+<div class="container mt-5">
+
+    <!-- ENCABEZADO -->
+    <div class="header-admin">
+        <div class="d-flex align-items-center">
+            <img src="{% static 'reservaciones/img/LOGO.png' %}" alt="Logo">
+            <h2>Consultar Reservaciones</h2>
+        </div>
+    </div>
+
+    <!-- TABLA -->
+    <div class="table-responsive mt-4">
+        <table class="table table-bordered text-center align-middle">
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Teléfono</th>
+                    <th>Fecha</th>
+                    <th>Invitados</th>
+                    <th>Tipo de Evento</th>
+                    <th>Estatus</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in reservaciones %}
+                <tr>
+                    <td>{{ r.nombreCliente }}</td>
+                    <td>{{ r.telefono }}</td>
+                    <td>{{ r.fechaEvento }}</td>
+                    <td>{{ r.numInvitados }}</td>
+                    <td>{{ r.tipoEvento.nombre }}</td>
+                    <td>
+                        {% if r.estatus == "pendiente" %}
+                        <span class="badge bg-warning text-dark">Pendiente</span>
+                        {% elif r.estatus == "confirmada" %}
+                        <span class="badge bg-success">Confirmada</span>
+                        {% elif r.estatus == "realizada" %}
+                        <span class="badge bg-secondary">Realizada</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="text-center text-muted py-4">No hay reservaciones registradas.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- BOTÓN REGRESAR ABAJO -->
+    <div class="text-center mt-4">
+        <a href="{% url 'gestion_admin' %}" class="btn btn-regresar">
+            <i class="bi bi-arrow-left-circle"></i> Regresar al menú
+        </a>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'reservaciones/css/agregar.css' %}">
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <img src="{% static 'reservaciones/img/LOGO.png' %}" alt="Logo" style="height:70px; margin-bottom:10px;">
+        <h2>Añadir Reservación</h2>
+    </div>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="nombreCliente" placeholder="Nombre del Cliente" class="form-control mb-2" required>
+        <input type="text" name="telefono" placeholder="Teléfono (10 dígitos)" class="form-control mb-2" required>
+        <input type="date" name="fechaEvento" class="form-control mb-2" required>
+        <input type="number" name="numInvitados" placeholder="Invitados" min="1" max="50" class="form-control mb-2"
+            required>
+
+        <label for="tipoEvento">Tipo de Evento:</label>
+        <select name="tipoEvento" id="tipoEvento" class="form-control mb-3" required>
+            <option value="" disabled selected>Selecciona un tipo de evento</option>
+            {% for tipo in tipos_evento %}
+            <option value="{{ tipo.id }}">{{ tipo.nombre }}</option>
+            {% endfor %}
+        </select>
+
+        <select name="estatus" class="form-select mb-3" required>
+            <option value="pendiente" selected>Pendiente</option>
+            <option value="confirmada">Confirmada</option>
+        </select>
+
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a href="{% url 'gestion_admin' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

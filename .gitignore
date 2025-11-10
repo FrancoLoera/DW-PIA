@@ -1,0 +1,41 @@
+env/
+
+# --- ARCHIVOS DE VISUAL STUDIO CODE ---
+.vscode/
+.history/
+.settings/
+*.code-workspace
+
+# --- ARCHIVOS DEL SISTEMA ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- ARCHIVOS DE PRUEBAS O TEMPORALES ---
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# --- ARCHIVOS DE PYTHON ---
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+*.pyo
+
+# --- CONFIGURACIONES Y ARCHIVOS DE ENTORNO ---
+*.env
+*.ini
+*.cfg
+*.log
+*.pot
+*.pyc
+
+# --- EVITA SUBIR ARCHIVOS INNECESARIOS A GITHUB ---
+*.pyc
+__pycache__/
+db.sqlite3
+/static/
+.env
