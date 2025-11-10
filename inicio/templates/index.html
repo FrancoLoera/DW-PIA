@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}FESTYA - Salón de Fiestas y Eventos {% endblock %}
+
+{% block content %}
+    <main>
+        <section class="vh-100 hero-section d-flex align-items-center justify-content-center">
+            <div class="container p-4">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-8 text-center text-md-start">
+                        <h1 class="display-1 mb-0-md text-center text-md-start">FESTYA</h1>
+                        <p class="fs-3 fw-bold text-uppercase text-center text-md-start" style="margin-top: -20px;">Salón de Fiestas y Eventos</p>
+                        <p class="p-text">Transformamos cada celebración en una experiencia única, cuidando cada detalle para que solo te dediques a disfrutar.</p>
+                        <div class="d-column d-flex-md gap-2">
+                            <a href="#contacto" class="btn btn-primary fw-medium">Contáctanos<i class="bi bi-envelope ms-2"></i></a>
+                            <a href="#cotizacion" class="btn btn-secondary fw-medium">Agenda tu Evento<i class="bi bi-calendar-check ms-2"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 position-relative">
+                        <div class="hero-image-container position-relative">
+                            <img src="{% static 'imgs/payaso - img.png' %}" class="hero-image active img-fluid" alt="Payaso">
+                            <img src="{% static 'imgs/jester - img.png' %}" class="hero-image img-fluid" alt="Bufón 2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const images = document.querySelectorAll(".hero-image");
+            let current = 0;
+
+            setInterval(() => {
+            images[current].classList.remove("active");
+            current = (current + 1) % images.length;
+            images[current].classList.add("active");
+            }, 4000);
+        });
+    </script>
+{% endblock %}
