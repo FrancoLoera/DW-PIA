@@ -26,7 +26,8 @@ class Reservacion(models.Model):
     tipoEvento = models.ForeignKey(TipoEvento, on_delete = models.PROTECT)
     
     def __str__(self):
-        return f"{self.nombre_cliente} - {self.fecha_evento} ({self.get_estatus_display()})"
+        return f"{self.nombreCliente} - {self.fechaEvento} ({self.get_estatus_display()})"
+
     
     def clean(self):
         super().clean()

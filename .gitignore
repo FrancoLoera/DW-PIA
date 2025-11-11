@@ -31,4 +31,15 @@ __pycache__/
 *.cfg
 *.log
 *.pot
+<<<<<<< HEAD
 *.pyc
+=======
+*.pyc
+
+# --- EVITA SUBIR ARCHIVOS INNECESARIOS A GITHUB ---
+*.pyc
+__pycache__/
+db.sqlite3
+/static/
+.env
+>>>>>>> branchFidel

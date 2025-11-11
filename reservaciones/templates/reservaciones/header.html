@@ -1,0 +1,11 @@
+{% load static %}
+<header class="d-flex justify-content-between align-items-center p-3 mb-4 shadow-sm rounded-3"
+    style="background-color: #fff;">
+    <div class="d-flex align-items-center">
+        <img src="{% static 'reservaciones/img/LOGO.png' %}" alt="Logo" style="height: 60px; margin-right: 15px;">
+        <h2 class="fw-bold text-primary mb-0">Gestión de Reservaciones</h2>
+    </div>
+    <a href="{% url 'logout' %}" class="btn btn-outline-danger">
+        <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+    </a>
+</header>

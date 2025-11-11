@@ -9,6 +9,4 @@ urlpatterns = [
     path('admin/consultar/', views.consultar_reservaciones, name='consultar_reservaciones'),
     path('admin/agregar/', views.agregar_reservacion, name='agregar_reservacion'),
     path('admin/actualizar/<int:id>/', views.actualizar_reservacion, name='actualizar_reservacion'),
-    path('empleado/gestion/', views.gestion_empleado, name='gestion_empleado'),
-    path('empleado/actualizar/<int:id>/', views.actualizar_estatus_empleado, name='actualizar_estatus_empleado'),
 ]

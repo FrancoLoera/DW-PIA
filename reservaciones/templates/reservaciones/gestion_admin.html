@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Gestión de Reservaciones{% endblock %}
+
+{% block content %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'reservaciones/css/gestion_admin.css' %}">
+
+<div class="container">
+
+    <!-- ENCABEZADO -->
+    <div class="header-admin">
+        <div class="d-flex align-items-center">
+            <img src="{% static 'reservaciones/img/LOGO.png' %}" alt="Logo">
+            <h2>Gestión de Reservaciones</h2>
+            <hr>
+        </div>
+
+        <a href="{% url 'index' %}" class="btn btn-regresar">
+            <i class="bi bi-arrow-left-circle"></i> Regresar al menú
+        </a>
+    </div>
+
+    <!-- BOTONES DE ACCIÓN -->
+    <div class="botones">
+        <a href="{% url 'consultar_reservaciones' %}" class="btn btn-consultar"><i class="bi bi-search"></i>
+            Consultar</a>
+        <a href="{% url 'agregar_reservacion' %}" class="btn btn-agregar"><i class="bi bi-plus-circle"></i> Añadir
+            registro</a>
+    </div>
+
+
+    <!-- TABLA DE RESERVACIONES -->
+    <div class="table-responsive">
+        <table class="table table-bordered text-center align-middle">
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Teléfono</th>
+                    <th>Fecha</th>
+                    <th>Invitados</th>
+                    <th>Tipo de Evento</th>
+                    <th>Estatus</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in reservaciones %}
+                <tr>
+                    <td>{{ r.nombreCliente }}</td>
+                    <td>{{ r.telefono }}</td>
+                    <td>{{ r.fechaEvento }}</td>
+                    <td>{{ r.numInvitados }}</td>
+                    <td>{{ r.tipoEvento.nombre }}</td>
+                    <td>{{ r.get_estatus_display }}</td>
+                    <td>
+                        <a href="{% url 'actualizar_reservacion' r.id %}" class="btn btn-editar btn-sm">
+                            <i class="bi bi-pencil"></i> Editar
+                        </a>
+                        <a href="{% url 'eliminar_reservacion' r.id %}" class="btn btn-eliminar btn-sm"
+                            onclick="return confirm('¿Seguro que quieres eliminar esta reservación?')">
+                            <i class="bi bi-trash"></i> Eliminar
+                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7" class="text-center">No hay reservaciones registradas.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
