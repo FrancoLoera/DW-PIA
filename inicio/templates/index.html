@@ -5,23 +5,63 @@
 
 {% block content %}
     <main>
+        <!-- HERO SECTION -->
         <section class="vh-100 hero-section d-flex align-items-center justify-content-center">
             <div class="container p-4">
                 <div class="row align-items-center">
                     <div class="col-12 col-md-8 text-center text-md-start">
-                        <h1 class="display-1 mb-0-md text-center text-md-start">FESTYA</h1>
+                        <h1 class="mb-0-md text-center text-md-start">FESTYA</h1>
                         <p class="fs-3 fw-bold text-uppercase text-center text-md-start" style="margin-top: -20px;">Salón de Fiestas y Eventos</p>
-                        <p class="p-text">Transformamos cada celebración en una experiencia única, cuidando cada detalle para que solo te dediques a disfrutar.</p>
-                        <div class="d-column d-flex-md gap-2">
-                            <a href="#contacto" class="btn btn-primary fw-medium">Contáctanos<i class="bi bi-envelope ms-2"></i></a>
-                            <a href="#cotizacion" class="btn btn-secondary fw-medium">Agenda tu Evento<i class="bi bi-calendar-check ms-2"></i></a>
+                        <p class="p-text pb-4 pb-md-2">Transformamos cada celebración en una experiencia única, cuidando cada detalle para que solo te dediques a disfrutar.</p>
+                        <div class="d-flex flex-column flex-md-row gap-2 align-items-center buttons-group">
+                            <a href="#contacto" class="btn btn-primary">Contáctanos<i class="bi bi-envelope ms-2"></i></a>
+                            <a href="#cotizacion" class="btn btn-secondary">Agenda tu Evento<i class="bi bi-calendar-check ms-2"></i></a>
                         </div>
                     </div>
-                    <div class="col-12 col-md-4 position-relative">
+                    <div class="hero-image-col col-12 col-md-4 position-relative">
                         <div class="hero-image-container position-relative">
                             <img src="{% static 'imgs/payaso - img.png' %}" class="hero-image active img-fluid" alt="Payaso">
                             <img src="{% static 'imgs/jester - img.png' %}" class="hero-image img-fluid" alt="Bufón 2">
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ABOUT SECTION -->
+        <section class="about-section d-flex align-items-center">
+            <div class="container ps-4 ps-md-0 ps-lg-4 pe-4 pe-md-0 pe-lg-4">
+                <div class="row gap-4 gap-lg-0">
+                    <div class="col-12 col-lg-5 col-md-12 d-flex flex-column justify-content-center">
+                        <h2 class="mb-3 text-center text-lg-start">Sobre Nosotros</h2>
+                        <p class="p-text mb-0 mb-lg-4"><b>Festya</b> es una empresa dedicada a brindar <b>diversión y entretenimiento</b> para todo tipo de eventos. Nuestro objetivo es convertir cada celebración en una experiencia inolvidable, ofreciendo shows, animadores y servicios pensados para adaptarse a cualquier ocasión.<br><br>
+                        Contamos con un equipo creativo y profesional que se encarga de llevar alegría, energía y un ambiente único a cada fiesta. En <b>Festya</b>, creemos que <b>cada evento merece ser especial</b>, por eso trabajamos para hacer que cada momento esté lleno de emoción y buenos recuerdos.</p>
+                        <a href="#contacto" class="btn btn-primary align-self-start d-none d-lg-inline-block">Contáctanos<i class="bi bi-envelope ms-2"></i></a>
+                    </div>
+                    <div class="col-12 col-lg-7 col-md-12 d-flex flex-column justify-content-center ps-lg-5">
+                        <!-- Tarjetas -->
+                        <div class="d-flex flex-column flex-md-row justify-content-center gap-4 mb-4">
+                            <div class="card-about d-flex flex-column align-items-center p-4">
+                                <i class="fa-solid fa-bullseye display-4 mt-3 mb-3"></i>
+                                <h3>Misión</h3>
+                                <p class="p-text">Ofrecer experiencias únicas y llenas de diversión a través de shows y servicios de entretenimiento que hagan de cada evento un momento especial.</p>
+                            </div>
+                            <div class="card-about d-flex flex-column align-items-center p-4">
+                                <i class="fa-solid fa-eye display-4 mt-3 mb-3"></i>
+                                <h3>Visión</h3>
+                                <p class="p-text">Ser una empresa reconocida por la calidad y creatividad de nuestros shows, haciendo de Festya la mejor opción para celebrar con alegría y estilo.</p>
+                            </div>
+                        </div>
+                        <!-- Valores -->
+                        <div class="d-flex flex-column flex-md-row align-items-center p-4 gap-0 gap-md-3 card-about card-about-dark">
+                            <div class="me-0 me-lg-3 d-flex align-items-center justify-content-center">
+                                <i class="bi bi-balloon-heart-fill display-4 mt-3 mb-3"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h3 class="text-center text-md-start">Valores</h3>
+                                <p class="p-text mb-0">En Festya, nuestros valores reflejan la pasión y alegría con la que trabajamos. Creemos en la honestidad, el respeto y la creatividad para ofrecer experiencias únicas que transmitan felicidad y dejen recuerdos inolvidables.</p>
+                            </div>
+                        </div>
+                        <a href="#contacto" class="btn btn-primary align-self-center d-inline-block d-lg-none mt-4">Contáctanos<i class="bi bi-envelope ms-2"></i></a>
                     </div>
                 </div>
             </div>

@@ -11,6 +11,7 @@
     --gris:              #efefef;
     --negro:             #343434;
     --transparente:      rgba(255, 255, 255, 0);
+    --shadow:            rgba(165,145,239,0.30);
 }
 
 [data-theme="dark"] {
@@ -38,8 +39,18 @@ body {
 
 h1 {
     font-family: 'Bungee';
-    font-size: 3rem;
+    font-size: 5rem;
     color: var(--primario);
+}
+
+h2 {
+    font-family: 'Bungee';
+    font-size: 3rem;
+}
+
+h3 {
+    font-family: 'Bungee';
+    font-size: 1.5rem;
 }
 
 .p-text {
@@ -127,6 +138,61 @@ h1 {
     color: var(--negro);
 }
 
+.about-section {
+    background-color: var(--secundario-light);
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.about-section h2 {
+    color: var(--primario);
+}
+
+.card-about {
+    background-color: var(--semi-blanco);
+    border-radius: 5px;
+    box-shadow: 0px 0px 6px 2px var(--shadow);
+    -webkit-box-shadow: 0px 0px 6px 2px var(--shadow);
+    -moz-box-shadow: 0px 0px 6px 2px var(--shadow);
+    transition: ease 0.3s;
+}
+
+.card-about:hover {
+    transform: translateY(-8px);
+    background-color: var(--primario);
+    color: var(--blanco);
+}
+
+.card-about i {
+    color: var(--primario);
+}
+
+.card-about:hover i{
+    color: var(--blanco);
+}
+
+.card-about-dark {
+    background-color: var(--primario);
+    color: var(--blanco);
+}
+
+.card-about-dark i {
+    color: var(--blanco) !important;
+}
+
+.card-about-dark i {
+    color: var(--blanco) !important;
+}
+
+.card-about-dark:hover {
+    background-color: var(--blanco);
+    color: var(--negro);
+}
+
+.card-about-dark:hover i {
+    color: var(--primario) !important;
+}
+
 @media (min-width: 769px) and (max-width: 992px) {
     
 }
@@ -136,7 +202,15 @@ h1 {
         width: 50%;
     }
 
+    .hero-image-col {
+        display: none;
+    }
+
     .hero-section .p-text {
         margin: 0 auto;
+    }
+
+    .buttons-group .btn {
+        width: 75%;
     }
 }
