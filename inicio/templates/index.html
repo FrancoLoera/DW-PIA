@@ -69,12 +69,13 @@
         <!-- SERVICES SECTION (no sé por qué las pongo en inglés xd) -->
         <section class="services-section d-flex align-items-center">
             <div class="container d-flex flex-column align-items-center justify-content-center ps-4 ps-md-0 ps-lg-4 pe-4 pe-md-0 pe-lg-4">
-                <h2>Nuestros Shows y Servicios</h2>
-                <p class="p-text description-text">En Festya contamos con una gran variedad de shows diseñados para llenar de diversión cada momento. Desde animaciones infantiles hasta espectáculos temáticos, hacemos que cada celebración sea única, emocionante y llena de alegría.</p>
+                <i class="bi bi-cake2-fill display-4"></i>
+                <h2 class="text-center text-md-start">Nuestros Shows y Servicios</h2>
+                <p class="p-text description-text mb-5">En Festya contamos con una gran variedad de shows diseñados para llenar de diversión cada momento. Desde animaciones infantiles hasta espectáculos temáticos, hacemos que cada celebración sea única, emocionante y llena de alegría.</p>
 
                 <div class="row g-4 align-items-stretch justify-content-center">
                     {% for opcion in opciones %}
-                    <div class="col-12 col-md-4 d-flex">
+                    <div class="col-12 col-lg-4 col-md-8 d-flex">
                         <div class="card-about card-services shadow-medium flex-fill text-center pt-5 pb-5">
                             <h3>{{ opcion.show.nombre }}</h3>
                             <p class="text-center w-75 mx-auto">{{ opcion.show.descripcion }}</p>
@@ -84,7 +85,7 @@
                     </div>
                     {% endfor %}
                 </div>
-                <a href="#contacto" class="btn btn-primary align-self-center mt-4">Contáctanos<i class="bi bi-envelope ms-2"></i></a>
+                <a href="#cotizacion" class="btn btn-secondary align-self-center mt-4">Agenda tu Evento<i class="bi bi-calendar-check ms-2"></i></a>
             </div>
         </section>
         <!-- TESTIMONIAL SECTION -->

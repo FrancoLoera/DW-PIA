@@ -5,10 +5,11 @@
     --secundario-dark:   #837aae;
     --terciario:         #f4d85a;
     --terciario-light:   #fff6cd;
-    --terciario-dark:    #d0b123;
+    --terciario-dark:    #b39e40;
     --blanco:            #fff;
     --semi-blanco:       #f8f8f8;
     --gris:              #efefef;
+    --gris-fuerte:       #4b4b4b;
     --negro:             #343434;
     --transparente:      rgba(255, 255, 255, 0);
     --shadow:            rgba(165,145,239,0.30);
@@ -125,6 +126,59 @@
     }
 
     .card-about-dark:hover h3 {
+        color: var(--blanco);
+    }
+
+    .services-section {
+        background-color: var(--primario);
+    }
+
+    .services-section i {
+        color: var(--blanco)
+    }
+
+    .services-section h2 {
+        color: var(--blanco);
+    }
+
+    .services-section .description-text {
+        color: var(--blanco);
+    }
+
+    .services-section .card-services {
+        background-color: var(--secundario-dark);
+        color: var(--blanco);
+    }
+
+    .services-section .card-services:hover {
+        background-color: var(--terciario);
+        color: var(--negro);
+    }
+
+    .services-section .card-services h3{
+        color: var(--blanco);
+    }
+
+    .services-section .card-services:hover h3 {
+        color: var(--negro);
+    }
+
+    .testimonial-section {
+        background-color: var(--gris-fuerte);
+    }
+
+    .card-testimonial {
+        background-color: var(--negro);
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+    }
+
+    .card-testimonial:hover {
+        background-color: var(--primario);
+    }
+
+    .card-testimonial p {
         color: var(--blanco);
     }
 }
@@ -330,15 +384,24 @@ h3 {
 }
 
 .card-services {
+    background-color: var(--gris);
     box-shadow: 0px 0px 6px 2px var(--gris--);
     -webkit-box-shadow: 0px 0px 6px 2px var(--gris--);
     -moz-box-shadow: 0px 0px 6px 2px var(--gris--);
 }
 
+.card-services h3 {
+    color: var(--primario);
+}
+
+.card-services:hover h3 {
+    color: var(--terciario);
+}
+
 .testimonial-section {
     background-color: var(--primario);
     padding-top: 5rem;
-    padding-bottom: 2.5rem;
+    padding-bottom: 5rem;
 }
 
 .testimonial-section h2, .testimonial-section p {
@@ -389,6 +452,10 @@ h3 {
 }
 
 @media (max-width: 768px) {
+    h2 {
+        font-size: 2rem;
+    }
+
     .hero-image {
         width: 50%;
     }
