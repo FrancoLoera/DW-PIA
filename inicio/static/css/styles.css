@@ -15,17 +15,118 @@
 }
 
 [data-theme="dark"] {
-    --primario:          #604abd;
-    --secundario:        #cac1f6;
-    --secundario-light:  #f1eeff;
-    --secundario-dark:   #837aae;
-    --terciario:         #f4d85a;
-    --terciario-light:   #fff6cd;
-    --terciario-dark:    #d0b123;
-    --blanco:            #fff;
-    --semi-blanco:       #f8f8f8;
-    --gris:              #efefef;
-    --negro:             #343434;
+    h1 {
+        color: var(--terciario);
+    }
+
+    .hero-section {
+        background-color: var(--primario);
+    }
+
+    .hero-section p {
+        color: var(--blanco);
+    }
+
+    .btn-primary {
+        background-color: var(--blanco);
+        border: 3px solid var(--blanco);
+        color: var(--primario);
+    }
+
+    .btn-primary:hover {
+        background-color: var(--transparente);
+        border: 3px solid var(--blanco);
+        color: var(--blanco);
+    }
+
+    .btn-secondary {
+        background-color: var(--terciario);
+        border: 3px solid var(--terciario);
+        color: var(--negro);
+    }
+
+    .btn-secondary:hover {
+        color: var(--blanco);
+    }
+
+    .about-section {
+    background-color: var(--negro);
+    }
+
+    .about-section h2 {
+        color: var(--blanco);
+    }
+
+    .about-section p {
+        color: var(--blanco);
+    }
+
+    .about-section .btn {
+        background-color: var(--primario);
+        border-color: var(--primario);
+        color: var(--blanco);
+    }
+
+    .about-section .btn:hover {
+        background-color: var(--transparente);
+        border-color: var(--blanco);
+    }
+
+    .card-about {
+        background-color: var(--primario);
+        box-shadow: 0px 0px 6px 2px var(--shadow);
+        -webkit-box-shadow: 0px 0px 6px 2px var(--shadow);
+        -moz-box-shadow: 0px 0px 6px 2px var(--shadow);
+    }
+
+    .card-about:hover {
+        background-color: var(--secundario-dark);
+        color: var(--blanco);
+    }
+
+    .card-about i {
+        color: var(--secundario);
+    }
+
+    .card-about:hover i{
+        color: var(--blanco);
+    }
+
+    .card-about h3 {
+        color: var(--secundario);
+    }
+
+    .card-about:hover h3 {
+        color: var(--blanco);
+    }
+
+    .card-about-dark {
+        background-color: var(--primario);
+        box-shadow: 0px 0px 6px 2px var(--shadow);
+        -webkit-box-shadow: 0px 0px 6px 2px var(--shadow);
+        -moz-box-shadow: 0px 0px 6px 2px var(--shadow);
+    }
+
+    .card-about-dark:hover {
+        background-color: var(--secundario-dark);
+        color: var(--blanco);
+    }
+
+    .card-about-dark i {
+        color: var(--secundario) !important;
+    }
+
+    .card-about-dark:hover i{
+        color: var(--blanco) !important;
+    }
+
+    .card-about-dark h3 {
+        color: var(--secundario);
+    }
+
+    .card-about-dark:hover h3 {
+        color: var(--blanco);
+    }
 }
 
 html {
@@ -191,6 +292,96 @@ h3 {
 
 .card-about-dark:hover i {
     color: var(--primario) !important;
+}
+
+.btn-dark-mode {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1050;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--negro);
+    color: var(--blanco);
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-dark-mode:hover {
+    transform: scale(1.1);
+    background-color: var(--primario);
+    color: var(--blanco);
+}
+
+.services-section {
+    background-color: var(--blanco);
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    overflow: visible !important;
+}
+
+.services-section .description-text {
+    max-width: 750px;
+}
+
+.card-services {
+    box-shadow: 0px 0px 6px 2px var(--gris--);
+    -webkit-box-shadow: 0px 0px 6px 2px var(--gris--);
+    -moz-box-shadow: 0px 0px 6px 2px var(--gris--);
+}
+
+.testimonial-section {
+    background-color: var(--primario);
+    padding-top: 5rem;
+    padding-bottom: 2.5rem;
+}
+
+.testimonial-section h2, .testimonial-section p {
+    color: var(--blanco);
+}
+
+.testimonial-section .description-text {
+    max-width: 750px;
+}
+
+.card-testimonial {
+    background-color: var(--secundario-light);
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+}
+
+.card-testimonial:hover {
+    background-color: var(--terciario);
+}
+
+.card-testimonial p {
+    color: var(--negro);
+}
+
+.card-testimonial i {
+    color: var(--secundario-dark);
+}
+
+.card-testimonial:hover i {
+    color: var(--negro);
+}
+
+.testimonial-section .btn {
+    background-color: var(--blanco);
+    border-color: var(--blanco);
+    color: var(--primario);
+}
+
+.testimonial-section .btn:hover {
+    background-color: var(--transparente);
+    border-color: var(--blanco);
+    color: var(--blanco);
 }
 
 @media (min-width: 769px) and (max-width: 992px) {

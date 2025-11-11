@@ -66,8 +66,83 @@
                 </div>
             </div>
         </section>
-    </main>
+        <!-- SERVICES SECTION (no sé por qué las pongo en inglés xd) -->
+        <section class="services-section d-flex align-items-center">
+            <div class="container d-flex flex-column align-items-center justify-content-center ps-4 ps-md-0 ps-lg-4 pe-4 pe-md-0 pe-lg-4">
+                <h2>Nuestros Shows y Servicios</h2>
+                <p class="p-text description-text">En Festya contamos con una gran variedad de shows diseñados para llenar de diversión cada momento. Desde animaciones infantiles hasta espectáculos temáticos, hacemos que cada celebración sea única, emocionante y llena de alegría.</p>
 
+                <div class="row g-4 align-items-stretch justify-content-center">
+                    {% for opcion in opciones %}
+                    <div class="col-12 col-md-4 d-flex">
+                        <div class="card-about card-services shadow-medium flex-fill text-center pt-5 pb-5">
+                            <h3>{{ opcion.show.nombre }}</h3>
+                            <p class="text-center w-75 mx-auto">{{ opcion.show.descripcion }}</p>
+                            <p><b>Duración:</b> {{ opcion.get_duracion_display }}</p>
+                            <p class="m-0"><b>Precio:</b> ${{ opcion.precio }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <a href="#contacto" class="btn btn-primary align-self-center mt-4">Contáctanos<i class="bi bi-envelope ms-2"></i></a>
+            </div>
+        </section>
+        <!-- TESTIMONIAL SECTION -->
+        <section class="testimonial-section d-flex align-items-center">
+            <div class="container d-flex flex-column align-items-center justify-content-center ps-4 ps-md-0 ps-lg-4 pe-4 pe-md-0 pe-lg-4">
+                <h2>Clientes Felices</h2>
+                <p class="p-text description-text mb-4">En Festya nos encanta ser parte de momentos únicos. Nuestros clientes comparten la alegría, diversión y magia que viven en cada evento. ¡Nada nos motiva más que ver sonrisas y buenos recuerdos!</p>
+                <div class="row g-4 align-items-stretch justify-content-center mb-3">
+                    <div class="col-12 col-md-4 d-flex">
+                        <div class="card-about card-testimonial shadow-medium flex-fill text-center p-5">
+                            <img src="{% static 'imgs/Testimonio 1 - img.png' %}" alt="Testimonio" class="img-fluid rounded mb-2">
+                            <div class="rating text-warning mb-1">
+                                <i class="bi bi-star-fill fs-4"></i>
+                                <i class="bi bi-star-fill fs-4"></i>
+                                <i class="bi bi-star-fill fs-4"></i>
+                                <i class="bi bi-star-fill fs-4"></i>
+                                <i class="bi bi-star-half fs-4"></i>
+                            </div>
+                            <p class="p-text mb-0">¡La fiesta fue increíble! Los shows de Festya hicieron que todos los invitados se divirtieran de principio a fin. Sin duda, volveríamos a contratar sus servicios.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 d-flex">
+                        <div class="card-about card-testimonial shadow-medium flex-fill text-center p-5">
+                            <img src="{% static 'imgs/Testimonio 2 - img.png' %}" alt="Testimonio" class="img-fluid rounded mb-2">
+                            <div class="rating text-warning mb-1">
+                                <i class="bi bi-star-fill fs-4"></i>
+                                <i class="bi bi-star-fill fs-4"></i>
+                                <i class="bi bi-star-fill fs-4"></i>
+                                <i class="bi bi-star-fill fs-4"></i>
+                                <i class="bi bi-star fs-4"></i>
+                            </div>
+                            <p class="p-text mb-0">Desde el primer momento, el equipo de Festya se mostró muy profesional y atento. Cada detalle de la animación hizo que nuestra celebración fuera inolvidable.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 d-flex">
+                        <div class="card-about card-testimonial shadow-medium flex-fill text-center p-5">
+                            <img src="{% static 'imgs/Testimonio 3 - img.png' %}" alt="Testimonio" class="img-fluid rounded mb-2">
+                            <div class="rating text-warning mb-1">
+                                <i class="bi bi-star-fill fs-4"></i>
+                                <i class="bi bi-star-fill fs-4"></i>
+                                <i class="bi bi-star-fill fs-4"></i>
+                                <i class="bi bi-star-fill fs-4"></i>
+                                <i class="bi bi-star fs-4"></i>
+                            </div>
+                            <p class="p-text mb-0">No podíamos imaginar una fiesta tan llena de alegría y energía. Gracias a Festya, cada momento estuvo lleno de diversión y buenos recuerdos.</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="#contacto" class="btn btn-primary align-self-center mt-4">Contáctanos<i class="bi bi-envelope ms-2"></i></a>
+            </div>
+        </section>
+    </main>
+    <button id="darkModeToggle" class="btn btn-dark-mode">
+        <i class="bi bi-moon-fill"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="{% static 'js/darkmode.js' %}"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const images = document.querySelectorAll(".hero-image");
@@ -79,5 +154,26 @@
             images[current].classList.add("active");
             }, 4000);
         });
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const items = document.querySelectorAll('#showsCarousel .carousel-item');
+
+    items.forEach((el) => {
+        const minPerSlide = 3;
+        let next = el.nextElementSibling;
+
+        // si no hay siguiente, volver al primero
+        for (let i = 1; i < minPerSlide; i++) {
+        if (!next) {
+            next = items[0];
+        }
+        // clonar el contenido del siguiente y agregarlo al actual
+        let cloneChild = next.querySelector('.col-md-4').cloneNode(true);
+        el.appendChild(cloneChild);
+        next = next.nextElementSibling;
+        }
+    });
+    });
     </script>
 {% endblock %}
