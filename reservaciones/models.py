@@ -3,13 +3,7 @@ from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, MaxValueValidator, MinLengthValidator
 from shows.models import OpcionDuracion
 
-# Create your models here.
-class TipoEvento(models.Model):
-    nombre = models.CharField(max_length = 50, unique = True)
-    
-    def __str__(self):
-        return self.nombre
-
+# Modelo principal
 class Reservacion(models.Model):
     
     ESTATUS = [
@@ -17,18 +11,29 @@ class Reservacion(models.Model):
         ("confirmada", "Confirmada"),
         ("realizada", "Realizada"),
     ]
+
+    TIPOS_EVENTO = [
+        ("cumpleaños", "Cumpleaños"),
+        ("boda", "Boda"),
+        ("xv", "XV Años"),
+        ("infantil", "Evento Infantil"),
+        ("corporativo", "Evento Corporativo"),
+        ("otro", "Otro"),
+    ]
     
-    nombreCliente = models.CharField(max_length = 100)
-    telefono = models.CharField(max_length = 10, validators = [MinLengthValidator(10)])
-    fechaEvento = models.DateField(unique = True)
-    numInvitados = models.PositiveSmallIntegerField(validators = [MinValueValidator(1), MaxValueValidator(50)], help_text = "1 a 50 invitados permitidos")
-    estatus = models.CharField(max_length = 10, choices = ESTATUS, default = "pendiente")
-    tipoEvento = models.ForeignKey(TipoEvento, on_delete = models.PROTECT)
+    nombreCliente = models.CharField(max_length=100)
+    telefono = models.CharField(max_length=10, validators=[MinLengthValidator(10)])
+    fechaEvento = models.DateField(unique=True)
+    numInvitados = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(50)],
+        help_text="1 a 50 invitados permitidos"
+    )
+    estatus = models.CharField(max_length=10, choices=ESTATUS, default="pendiente")
+    tipoEvento = models.CharField(max_length=20, choices=TIPOS_EVENTO, default="cumpleaños")
     
     def __str__(self):
         return f"{self.nombreCliente} - {self.fechaEvento} ({self.get_estatus_display()})"
 
-    
     def clean(self):
         super().clean()
         
@@ -38,7 +43,6 @@ class Reservacion(models.Model):
             tipos_Show = set()
             
             for r in relaciones:
-                # Validar que no se repita el mismo tipo de show. Tampoco se puede repetir el mismo tipo de show con distinta duración
                 nombre_Show = r.opcionDuracion.show.nombre
                 
                 if nombre_Show in tipos_Show:
@@ -51,14 +55,14 @@ class Reservacion(models.Model):
                 
             if total_Minutos > (8 * 60):
                 raise ValidationError("La duración total de los shows no puede exceder 8 horas")
-    
+
+
 class ReservacionShow(models.Model):
-    reservacion = models.ForeignKey(Reservacion, on_delete = models.CASCADE)
+    reservacion = models.ForeignKey(Reservacion, on_delete=models.CASCADE)
     opcionDuracion = models.ForeignKey(OpcionDuracion, on_delete=models.PROTECT)
     
-    # Evita que se tenga más de un mismo tipo de show
     class Meta:
         unique_together = ("reservacion", "opcionDuracion")
         
     def __str__(self):
-        return f"{self.reservacion.nombre_cliente} - {self.opcion_duracion}"
+        return f"{self.reservacion.nombreCliente} - {self.opcionDuracion}"

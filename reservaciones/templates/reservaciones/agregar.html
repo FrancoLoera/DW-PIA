@@ -3,6 +3,14 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'reservaciones/css/agregar.css' %}">
 
+<div class="mt-3">
+    {% for message in messages %}
+    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %}" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+
 <div class="container mt-5">
     <div class="text-center mb-4">
         <img src="{% static 'reservaciones/img/LOGO.png' %}" alt="Logo" style="height:70px; margin-bottom:10px;">
@@ -10,27 +18,53 @@
     </div>
     <form method="POST">
         {% csrf_token %}
-        <input type="text" name="nombreCliente" placeholder="Nombre del Cliente" class="form-control mb-2" required>
-        <input type="text" name="telefono" placeholder="Teléfono (10 dígitos)" class="form-control mb-2" required>
-        <input type="date" name="fechaEvento" class="form-control mb-2" required>
-        <input type="number" name="numInvitados" placeholder="Invitados" min="1" max="50" class="form-control mb-2"
-            required>
 
-        <label for="tipoEvento">Tipo de Evento:</label>
-        <select name="tipoEvento" id="tipoEvento" class="form-control mb-3" required>
-            <option value="" disabled selected>Selecciona un tipo de evento</option>
-            {% for tipo in tipos_evento %}
-            <option value="{{ tipo.id }}">{{ tipo.nombre }}</option>
-            {% endfor %}
+        <label for="nombreCliente">Nombre del cliente:</label>
+        <input type="text" name="nombreCliente" id="nombreCliente" required>
+
+        <label for="telefono">Teléfono:</label>
+        <input type="text" name="telefono" id="telefono" required>
+
+        <label for="fechaEvento">Fecha del evento:</label>
+        <input type="date" name="fechaEvento" id="fechaEvento" required>
+
+        <label for="numInvitados">Número de invitados:</label>
+        <input type="number" name="numInvitados" id="numInvitados" min="1" max="50" required>
+
+        <label for="tipoEvento">Tipo de evento:</label>
+        <select name="tipoEvento" id="tipoEvento" required>
+            <option value="cumpleaños">Cumpleaños</option>
+            <option value="boda">Boda</option>
+            <option value="xv">XV Años</option>
+            <option value="infantil">Evento Infantil</option>
+            <option value="corporativo">Evento Corporativo</option>
+            <option value="otro">Otro</option>
         </select>
 
-        <select name="estatus" class="form-select mb-3" required>
-            <option value="pendiente" selected>Pendiente</option>
+
+        <label for="estatus">Estatus:</label>
+        <select name="estatus" id="estatus">
+            <option value="pendiente">Pendiente</option>
             <option value="confirmada">Confirmada</option>
+            <option value="realizada">Realizada</option>
         </select>
 
-        <button type="submit" class="btn btn-success">Guardar</button>
-        <a href="{% url 'gestion_admin' %}" class="btn btn-secondary">Cancelar</a>
+        <button type="submit">Guardar reservación</button>
     </form>
 </div>
+
+<script>
+    function validarFormulario() {
+        const fechaEvento = document.querySelector('input[name="fechaEvento"]').value;
+        const fechaActual = new Date().toISOString().split('T')[0];
+
+        if (fechaEvento < fechaActual) {
+            alert("La fecha del evento no puede ser anterior a la fecha actual.");
+            return false; // Evita enviar el formulario
+        }
+
+        return true; // Todo correcto
+    }
+</script>
+
 {% endblock %}

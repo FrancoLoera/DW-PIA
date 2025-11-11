@@ -27,37 +27,34 @@
 
             <div class="col-md-6">
                 <label class="form-label fw-semibold text-secondary">Nombre del Cliente</label>
-                <input type="text" name="nombreCliente" class="form-control" 
-                       value="{{ reservacion.nombreCliente }}" required>
+                <input type="text" name="nombreCliente" class="form-control" value="{{ reservacion.nombreCliente }}"
+                    required>
             </div>
 
             <div class="col-md-6">
                 <label class="form-label fw-semibold text-secondary">Teléfono</label>
-                <input type="text" name="telefono" class="form-control" 
-                       value="{{ reservacion.telefono }}" required>
+                <input type="text" name="telefono" class="form-control" value="{{ reservacion.telefono }}" required>
             </div>
 
             <div class="col-md-6">
                 <label class="form-label fw-semibold text-secondary">Fecha del Evento</label>
-                <input type="date" name="fechaEvento" class="form-control" 
-                       value="{{ reservacion.fechaEvento|date:'Y-m-d' }}" required>
+                <input type="date" name="fechaEvento" class="form-control"
+                    value="{{ reservacion.fechaEvento|date:'Y-m-d' }}" required>
             </div>
 
             <div class="col-md-6">
                 <label class="form-label fw-semibold text-secondary">Número de Invitados</label>
-                <input type="number" name="numInvitados" class="form-control" 
-                       value="{{ reservacion.numInvitados }}" required>
+                <input type="number" name="numInvitados" class="form-control" value="{{ reservacion.numInvitados }}"
+                    required>
             </div>
 
             <div class="col-md-6">
                 <label class="form-label fw-semibold text-secondary">Tipo de Evento</label>
                 <select name="tipoEvento" class="form-select" required>
-                    {% for tipo in tipos_evento %}
-                        {% if tipo.id == reservacion.tipoEvento.id %}
-                            <option value="{{ tipo.id }}" selected>{{ tipo.nombre }}</option>
-                        {% else %}
-                            <option value="{{ tipo.id }}">{{ tipo.nombre }}</option>
-                        {% endif %}
+                    {% for valor, nombre in tipos_evento %}
+                    <option value="{{ valor }}" {% if reservacion.tipoEvento == valor %}selected{% endif %}>
+                        {{ nombre }}
+                    </option>
                     {% endfor %}
                 </select>
             </div>
@@ -66,21 +63,21 @@
                 <label class="form-label fw-semibold text-secondary">Estatus</label>
                 <select name="estatus" class="form-select">
                     {% if reservacion.estatus == "pendiente" %}
-                        <option value="pendiente" selected>Pendiente</option>
+                    <option value="pendiente" selected>Pendiente</option>
                     {% else %}
-                        <option value="pendiente">Pendiente</option>
+                    <option value="pendiente">Pendiente</option>
                     {% endif %}
 
                     {% if reservacion.estatus == "confirmada" %}
-                        <option value="confirmada" selected>Confirmada</option>
+                    <option value="confirmada" selected>Confirmada</option>
                     {% else %}
-                        <option value="confirmada">Confirmada</option>
+                    <option value="confirmada">Confirmada</option>
                     {% endif %}
 
                     {% if reservacion.estatus == "realizada" %}
-                        <option value="realizada" selected>Realizada</option>
+                    <option value="realizada" selected>Realizada</option>
                     {% else %}
-                        <option value="realizada">Realizada</option>
+                    <option value="realizada">Realizada</option>
                     {% endif %}
                 </select>
             </div>
