@@ -51,7 +51,7 @@
     }
 
     .about-section {
-    background-color: var(--negro);
+        background-color: var(--negro);
     }
 
     .about-section h2 {
@@ -164,7 +164,10 @@
     }
 
     .testimonial-section {
-        background-color: var(--gris-fuerte);
+        background-image: url(../imgs/Fondo\ Decorativo\ Gris\ -\ img.png);
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
     }
 
     .card-testimonial {
@@ -208,6 +211,22 @@ h3 {
     font-size: 1.5rem;
 }
 
+footer {
+    background-color: var(--negro) !important;
+}
+
+footer h3 {
+    color: var(--blanco);
+}
+
+footer .btn:hover {
+    color: var(--blanco);
+}
+
+.nav-link.active {
+    color: var(--primario) !important;
+}
+
 .p-text {
     font-size: 1rem;
     text-align: justify;
@@ -218,6 +237,7 @@ h3 {
     background-image: url(../imgs/fondo\ hero.png);
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     overflow: hidden;
 }
 
@@ -399,9 +419,24 @@ h3 {
 }
 
 .testimonial-section {
-    background-color: var(--primario);
+    background-image: url(../imgs/Fondo\ Decorativo\ Morado\ -\ img.png);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     padding-top: 5rem;
     padding-bottom: 5rem;
+}
+
+.testimonial-section i {
+    color: var(--blanco);
+}
+
+.testimonial-section a i {
+    color: var(--primario);
+}
+
+.testimonial-section a:hover i {
+    color: var(--blanco);
 }
 
 .testimonial-section h2, .testimonial-section p {
@@ -445,6 +480,21 @@ h3 {
     background-color: var(--transparente);
     border-color: var(--blanco);
     color: var(--blanco);
+}
+
+.gallery-container {
+    background-color: var(--gris);
+}
+
+.gallery-img {
+    transition: ease 0.4s;
+    filter: grayscale(95%);  
+}
+
+.gallery-img:hover {
+    scale: 1.3;
+    transform: rotate(5deg);
+    filter: grayscale(0%);  
 }
 
 @media (min-width: 769px) and (max-width: 992px) {
