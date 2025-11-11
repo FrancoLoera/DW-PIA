@@ -19,15 +19,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-<<<<<<< HEAD
     path('', include('inicio.urls')),
-<<<<<<< Updated upstream
-=======
-    path('', include('usuarios.urls'))
->>>>>>> Stashed changes
-=======
     path('reservaciones/', include('reservaciones.urls')),
-    path('', include('inicio.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
->>>>>>> branchFidel
-]
+    path('', include('usuarios.urls')),
+] 

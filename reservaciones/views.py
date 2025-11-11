@@ -1,15 +1,9 @@
-<<<<<<< HEAD
-from django.shortcuts import render
 
-<<<<<<< Updated upstream
-# Create your views here.
-=======
-=======
+from django.shortcuts import render
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Reservacion, TipoEvento
 from django.contrib.auth.decorators import login_required
 
->>>>>>> branchFidel
 # Página principal (tu dashboard)
 @login_required
 def gestion_admin(request):
@@ -79,7 +73,7 @@ def actualizar_reservacion(request, id):
 def eliminar_reservacion(request, id):
     reservacion = get_object_or_404(Reservacion, id=id)
     reservacion.delete()
-<<<<<<< HEAD
+
     return redirect('gestion_admin')
 
 
@@ -107,7 +101,3 @@ def actualizar_estatus_empleado(request, id):
     return render(request, 'reservaciones/actualizar_empleado.html', {
         'reservacion': reservacion,
     })
->>>>>>> Stashed changes
-=======
-    return redirect('gestion_admin')
->>>>>>> branchFidel
