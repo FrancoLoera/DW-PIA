@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'reservaciones',
     'usuarios.apps.UsuariosConfig',
     'inicio',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +136,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/reservaciones/admin/gestion/'
 LOGOUT_REDIRECT_URL = '/'
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+SESSION_COOKIE_AGE = 60 * 60 * 4   # cookies de 4 horas

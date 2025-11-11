@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Reservacion, TipoEvento
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 
 # Página principal (tu dashboard)
 @login_required
@@ -72,3 +73,7 @@ def eliminar_reservacion(request, id):
     reservacion = get_object_or_404(Reservacion, id=id)
     reservacion.delete()
     return redirect('gestion_admin')
+
+def logout_view(request):
+    logout(request)  # Cierra sesión al usuario
+    return redirect('index')  # Redirige a la página principal
