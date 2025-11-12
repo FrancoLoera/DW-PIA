@@ -10,15 +10,15 @@ def login_personalizado(request):
         if user is not None:
             login(request, user)
 
-            # Si es superusuario → va al panel de admin del salón
             if user.is_superuser:
                 return redirect('/reservaciones/admin/gestion/')
-
-            return redirect('/reservaciones/admin/consultar/')
+            else:
+                return redirect('/reservaciones/empleado/gestion/')
 
         return render(request, "usuarios/login.html", {"error": "Credenciales incorrectas"})
 
     return render(request, "usuarios/login.html")
+
 
 def cerrar_sesion(request):
     logout(request)

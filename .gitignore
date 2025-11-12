@@ -36,6 +36,3 @@ __pycache__/
 # --- EVITA SUBIR ARCHIVOS INNECESARIOS A GITHUB ---
 *.pyc
 __pycache__/
-db.sqlite3
-/static/
-.env
