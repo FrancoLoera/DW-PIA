@@ -1,18 +1,13 @@
 from django.urls import path
-from django.contrib.auth import views as auth_views
+from django.contrib.auth import logout
+from django.shortcuts import redirect
 from . import views
+
+def cerrar_sesion(request):
+    logout(request)
+    return redirect('index')  # 👈 redirige a tu página principal
 
 urlpatterns = [
     path('login/', views.login_personalizado, name='login'),
-    path(
-    'logout/',
-    auth_views.LogoutView.as_view(
-        next_page='index',
-        http_method_names=['get', 'post']
-    ),
-    name='logout'
-),
-    path('cerrar/', views.cerrar_sesion, name='cerrar_sesion'),
+    path('logout/', cerrar_sesion, name='cerrar_sesion'),  # 👈 aquí está el cambio
 ]
-
-
