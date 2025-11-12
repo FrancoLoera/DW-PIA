@@ -604,7 +604,6 @@ footer .btn:hover {
   }
 }
 
-/* Evita fondo negro en modo oscuro */
 [data-theme="dark"] .mapa-container {
   background: none !important;
   box-shadow: none !important;
@@ -837,6 +836,10 @@ footer .btn:hover {
     color: var(--blanco);
 }
 
+[data-theme="dark"] .accordion-button:hover {
+    background-color: var(--terciario-dark);
+}
+
 [data-theme="dark"] .accordion-button:not(.collapsed) {
     background-color: var(--terciario-dark);
     color: var(--negro);
@@ -854,7 +857,7 @@ footer .btn:hover {
   transition: transform 200ms cubic-bezier(.2,.8,.2,1);
 }
 
-/* Aseguramos que los controles queden fijos y no se escalen */
+/* Z00M */
 .no-zoom {
   position: fixed;
   bottom: 7rem;
@@ -863,32 +866,20 @@ footer .btn:hover {
   transform: none !important;
   transform-origin: center;
   pointer-events: auto;
-  font-size: 1rem !important;
 }
 
-/* Forzamos que los hijos tampoco se escalen por herencia */
 .no-zoom, .no-zoom * {
-  transform: none !important;
-  font-size: 1rem !important;
-}
-
-/* Para que el botón darkmode tampoco se vea afectado */
-.btn-dark-mode {
-  position: fixed;
-  bottom: 1.5rem;
-  right: 2rem;
-  z-index: 100000;
+  font-size: 24px !important;
 }
 
 .zoom-controls {
     position: fixed;
-    bottom: 110px; /* 🔸 PX, no REM */
-    right: 24px;   /* 🔸 PX, no REM */
+    bottom: 100px; 
+    right: 24px;   
     display: flex;
     flex-direction: column;
-    gap: 10px;     /* 🔸 PX, no REM */
+    gap: 10px;    
     z-index: 9999;
-    transform: none !important;
 }
 
 .zoom-controls .btn-floating {
@@ -896,7 +887,7 @@ footer .btn:hover {
     color: var(--blanco);
     border: none;
     border-radius: 50%;
-    width: 48px; /* PX fijos */
+    width: 48px;
     height: 48px;
     display: flex;
     justify-content: center;
@@ -909,29 +900,13 @@ footer .btn:hover {
 .zoom-controls .btn-floating:hover {
     background-color: var(--terciario);
     color: var(--negro);
-    transform: translateY(-2px);
-}
-
-/* Responsive (opcional) */
-@media (max-width: 48rem) {
-  .no-zoom { right: 1rem; bottom: 6rem; }
-  .zoom-controls .btn-floating { width: 2.4rem; height: 2.4rem; font-size:1.0rem; }
-}
-
-/* === Modo oscuro === */
-[data-theme="dark"] .zoom-controls .btn-floating {
-    background-color: var(--secundario-dark);
-    color: var(--terciario);
-}
-
-[data-theme="dark"] .zoom-controls .btn-floating:hover {
-    background-color: var(--primario);
-    color: var(--blanco);
+    transform: scale(1.2);
+    box-shadow: 0 0 12px 4px var(--shadow);
 }
 
 #darkModeToggle {
     position: fixed;
-    bottom: 24px;  /* píxeles fijos, no se escalan con el zoom */
+    bottom: 24px; 
     right: 24px;
     width: 48px;
     height: 48px;
@@ -946,18 +921,19 @@ footer .btn:hover {
     cursor: pointer;
     z-index: 9999;
     transition: all 0.2s ease-in-out;
+    font-size: 24px !important;
 }
 
 #darkModeToggle:hover {
     background-color: var(--terciario);
     color: var(--negro);
-    transform: translateY(-2px);
+    transform: scale(1.2);
+    box-shadow: 0 0 12px 4px var(--shadow);
 }
 
-/* TABLETAS (769px a 992px) */
 @media (min-width: 769px) and (max-width: 992px) {
   
-  /* FAQ */
+
   .faq-section h2 {
     font-size: 2.2rem;
   }
@@ -997,7 +973,6 @@ footer .btn:hover {
 
 }
 
-/* TELÉFONOS (hasta 768px) */
 @media (max-width: 768px) {
 
   /* FAQ */
