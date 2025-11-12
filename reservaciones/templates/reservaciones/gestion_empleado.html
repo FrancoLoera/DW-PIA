@@ -49,10 +49,17 @@
                 <tr>
                     <td>{{ r.nombreCliente }}</td>
                     <td>{{ r.telefono }}</td>
-                    <td>{{ r.fechaEvento }}</td>
+                    <td>{{ r.fechaEvento|date:"d/m/Y" }}</td>
                     <td>{{ r.numInvitados }}</td>
-                    <td>{{ r.tipoEvento.nombre }}</td>
-                    <td>{{ r.get_estatus_display }}</td>
+                    <td>
+                        {% if r.tipoEvento == 'boda' %}Boda{% endif %}
+                        {% if r.tipoEvento == 'cumpleaños' %}Cumpleaños{% endif %}
+                        {% if r.tipoEvento == 'quinceaños' %}Quinceaños{% endif %}
+                        {% if r.tipoEvento == 'corporativo' %}Evento Corporativo{% endif %}
+                        {% if r.tipoEvento == 'otro' %}Otro{% endif %}
+                    </td>
+
+                    <td>{{ r.estatus|capfirst }}</td>
                     <td>
                         <a href="{% url 'actualizar_estatus_empleado' r.id %}" class="btn btn-editar btn-sm">
                             <i class="bi bi-pencil"></i> Cambiar Estatus

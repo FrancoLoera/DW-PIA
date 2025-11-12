@@ -16,6 +16,12 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'inicio', 'static'),
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
@@ -41,6 +47,7 @@ INSTALLED_APPS = [
     'reservaciones',
     'usuarios.apps.UsuariosConfig',
     'inicio',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -119,19 +126,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = '/static/'
-
-STATICFILES_DIRS = [
-    BASE_DIR / 'reservaciones' / 'static',
-    BASE_DIR / 'inicio' / 'static',
-]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/reservaciones/admin/gestion/'
 LOGOUT_REDIRECT_URL = '/'
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+SESSION_COOKIE_AGE = 60 * 60 * 4   # cookies de 4 horas
