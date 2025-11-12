@@ -1,38 +1,49 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block content %}
 <link rel="stylesheet" href="{% static 'reservaciones/css/agregar.css' %}">
-
-<div class="mt-3">
-    {% for message in messages %}
-    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %}" role="alert">
-        {{ message }}
-    </div>
-    {% endfor %}
-</div>
 
 <div class="container mt-5">
     <div class="text-center mb-4">
         <img src="{% static 'reservaciones/img/LOGO.png' %}" alt="Logo" style="height:70px; margin-bottom:10px;">
         <h2>Añadir Reservación</h2>
     </div>
-    <form method="POST">
+
+    <form method="POST" onsubmit="return validarFormulario()">
         {% csrf_token %}
 
+        <!-- Nombre -->
         <label for="nombreCliente">Nombre del cliente:</label>
-        <input type="text" name="nombreCliente" id="nombreCliente" required>
+        <input type="text" name="nombreCliente" id="nombreCliente"
+               pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+"
+               title="El nombre solo puede contener letras y espacios."
+               required>
 
+        <!-- Teléfono -->
         <label for="telefono">Teléfono:</label>
-        <input type="text" name="telefono" id="telefono" required>
+        <input type="text" name="telefono" id="telefono"
+               pattern="[0-9]{10}"
+               title="El teléfono debe tener exactamente 10 dígitos y solo números."
+               required>
 
+        <!-- Fecha del evento -->
         <label for="fechaEvento">Fecha del evento:</label>
-        <input type="date" name="fechaEvento" id="fechaEvento" required>
+        <input type="date" name="fechaEvento" id="fechaEvento"
+               title="Selecciona una fecha válida para el evento."
+               required>
 
+        <!-- Número de invitados -->
         <label for="numInvitados">Número de invitados:</label>
-        <input type="number" name="numInvitados" id="numInvitados" min="1" max="50" required>
+        <input type="number" name="numInvitados" id="numInvitados"
+               min="1" max="50"
+               title="El número de invitados debe ser entre 1 y 50."
+               required>
 
+        <!-- Tipo de evento -->
         <label for="tipoEvento">Tipo de evento:</label>
         <select name="tipoEvento" id="tipoEvento" required>
+            <option value="">Selecciona una opción</option>
             <option value="cumpleaños">Cumpleaños</option>
             <option value="boda">Boda</option>
             <option value="xv">XV Años</option>
@@ -41,7 +52,7 @@
             <option value="otro">Otro</option>
         </select>
 
-
+        <!-- Estatus -->
         <label for="estatus">Estatus:</label>
         <select name="estatus" id="estatus">
             <option value="pendiente">Pendiente</option>
@@ -49,22 +60,38 @@
             <option value="realizada">Realizada</option>
         </select>
 
-        <button type="submit">Guardar reservación</button>
+        <div class="text-center mt-4">
+            <button type="submit">Guardar reservación</button>
+            <a href="{% url 'gestion_admin' %}" class="btn btn-regresar ms-2">
+                <i class="bi bi-x-circle"></i> Cancelar
+            </a>
+        </div>
     </form>
 </div>
 
 <script>
-    function validarFormulario() {
-        const fechaEvento = document.querySelector('input[name="fechaEvento"]').value;
-        const fechaActual = new Date().toISOString().split('T')[0];
+    function validarFormulario(event) {
+        const fechaEventoInput = document.querySelector('#fechaEvento');
+        const valor = fechaEventoInput.value;
 
-        if (fechaEvento < fechaActual) {
-            alert("La fecha del evento no puede ser anterior a la fecha actual.");
-            return false; // Evita enviar el formulario
+        if (!valor) return true;
+
+        const partes = valor.split('-'); // YYYY-MM-DD
+        const fechaEvento = new Date(partes[0], partes[1] - 1, partes[2]);
+        const hoy = new Date();
+        hoy.setHours(0, 0, 0, 0);
+
+        if (fechaEvento < hoy) {
+            fechaEventoInput.setCustomValidity("La fecha del evento no puede ser anterior a la fecha actual.");
+            fechaEventoInput.reportValidity();
+            event.preventDefault();
+            return false;
+        } else {
+            fechaEventoInput.setCustomValidity("");
         }
-
-        return true; // Todo correcto
+        return true;
     }
-</script>
 
+    document.querySelector('form').addEventListener('submit', validarFormulario);
+</script>
 {% endblock %}

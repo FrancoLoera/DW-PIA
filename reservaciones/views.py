@@ -24,14 +24,15 @@ def consultar_reservaciones(request):
 TIPOS_EVENTO = [
     ('boda', 'Boda'),
     ('cumpleaños', 'Cumpleaños'),
-    ('quinceaños', 'Quinceaños'),
+    ('xv', 'XV Años'),  # 👈 agrega esta línea
+    ('infantil', 'Evento Infantil'),
     ('corporativo', 'Evento Corporativo'),
     ('otro', 'Otro'),
 ]
 
-
 # AÑADIR (crear nueva reservación)
 def agregar_reservacion(request):
+    errores = []
     if request.method == "POST":
         nombreCliente = request.POST["nombreCliente"].strip()
         telefono = request.POST["telefono"].strip()
@@ -40,42 +41,36 @@ def agregar_reservacion(request):
         tipoEvento = request.POST["tipoEvento"]
         estatus = request.POST["estatus"]
 
-        # VALIDACIONES
-
-        # 1️⃣ Nombre solo letras y espacios
+        # Validaciones
         if not nombreCliente.replace(" ", "").isalpha():
-            messages.error(request, "El nombre solo puede contener letras y espacios.")
-            return render(request, "reservaciones/agregar.html", {"tipos_evento": TIPOS_EVENTO})
+            errores.append("El nombre solo puede contener letras y espacios.")
 
-        # 2️⃣ Teléfono solo números y exactamente 10 dígitos
         if not (telefono.isdigit() and len(telefono) == 10):
-            messages.error(request, "El teléfono debe tener exactamente 10 dígitos y solo números.")
-            return render(request, "reservaciones/agregar.html", {"tipos_evento": TIPOS_EVENTO})
+            errores.append("El teléfono debe tener exactamente 10 dígitos y solo números.")
 
-        # 3️⃣ Fecha válida y no pasada
         try:
             fecha_evento_obj = datetime.strptime(fechaEvento, "%Y-%m-%d").date()
             if fecha_evento_obj < datetime.today().date():
-                messages.error(request, "La fecha del evento no puede ser anterior a hoy.")
-                return render(request, "reservaciones/agregar.html", {"tipos_evento": TIPOS_EVENTO})
+                errores.append("La fecha del evento no puede ser anterior a hoy.")
         except ValueError:
-            messages.error(request, "La fecha del evento no es válida.")
-            return render(request, "reservaciones/agregar.html", {"tipos_evento": TIPOS_EVENTO})
+            errores.append("La fecha del evento no es válida.")
 
-        # Crear la reservación
-        Reservacion.objects.create(
-            nombreCliente=nombreCliente,
-            telefono=telefono,
-            fechaEvento=fecha_evento_obj,
-            numInvitados=numInvitados,
-            tipoEvento=tipoEvento,
-            estatus=estatus,
-        )
+        if not errores:
+            Reservacion.objects.create(
+                nombreCliente=nombreCliente,
+                telefono=telefono,
+                fechaEvento=fecha_evento_obj,
+                numInvitados=numInvitados,
+                tipoEvento=tipoEvento,
+                estatus=estatus,
+            )
+            messages.success(request, "Reservación agregada correctamente.")
+            return redirect("gestion_admin")
 
-        messages.success(request, "Reservación agregada correctamente.")
-        return redirect("gestion_admin")
-
-    return render(request, "reservaciones/agregar.html", {"tipos_evento": TIPOS_EVENTO})
+    return render(request, "reservaciones/agregar.html", {
+        "tipos_evento": TIPOS_EVENTO,
+        "errores": errores
+    })
 
 
 # ACTUALIZAR (editar reservación existente)

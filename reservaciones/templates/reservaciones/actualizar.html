@@ -21,31 +21,33 @@
     </div>
 
     <!-- FORMULARIO DE ACTUALIZACIÓN -->
-    <form method="POST" class="p-4 shadow-sm rounded-4">
+    <form method="POST" class="p-4 shadow-sm rounded-4" onsubmit="return validarFormulario()">
         {% csrf_token %}
         <div class="row g-3">
 
             <div class="col-md-6">
                 <label class="form-label fw-semibold text-secondary">Nombre del Cliente</label>
                 <input type="text" name="nombreCliente" class="form-control" value="{{ reservacion.nombreCliente }}"
-                    required>
+                    pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" title="El nombre solo puede contener letras y espacios." required>
             </div>
 
             <div class="col-md-6">
                 <label class="form-label fw-semibold text-secondary">Teléfono</label>
-                <input type="text" name="telefono" class="form-control" value="{{ reservacion.telefono }}" required>
+                <input type="text" name="telefono" class="form-control" value="{{ reservacion.telefono }}"
+                    pattern="[0-9]{10}" title="El teléfono debe tener exactamente 10 dígitos y solo números." required>
             </div>
 
             <div class="col-md-6">
                 <label class="form-label fw-semibold text-secondary">Fecha del Evento</label>
                 <input type="date" name="fechaEvento" class="form-control"
-                    value="{{ reservacion.fechaEvento|date:'Y-m-d' }}" required>
+                    value="{{ reservacion.fechaEvento|date:'Y-m-d' }}"
+                    title="Selecciona una fecha válida para el evento." required>
             </div>
 
             <div class="col-md-6">
                 <label class="form-label fw-semibold text-secondary">Número de Invitados</label>
                 <input type="number" name="numInvitados" class="form-control" value="{{ reservacion.numInvitados }}"
-                    required>
+                    min="1" max="50" title="El número de invitados debe ser entre 1 y 50." required>
             </div>
 
             <div class="col-md-6">
@@ -93,4 +95,35 @@
         </div>
     </form>
 </div>
+
+<script>
+    function validarFormulario(event) {
+        const fechaEventoInput = document.querySelector('input[name="fechaEvento"]');
+        const valor = fechaEventoInput.value;
+
+        // Evita validaciones si no hay fecha
+        if (!valor) return true;
+
+        // Convertir correctamente sin afectar la zona horaria
+        const partes = valor.split('-'); // [año, mes, día]
+        const fechaEvento = new Date(partes[0], partes[1] - 1, partes[2]); // local
+        const hoy = new Date();
+        hoy.setHours(0, 0, 0, 0);
+
+        if (fechaEvento < hoy) {
+            fechaEventoInput.setCustomValidity("La fecha del evento no puede ser anterior a la fecha actual.");
+            fechaEventoInput.reportValidity();
+            event.preventDefault();
+            return false;
+        } else {
+            fechaEventoInput.setCustomValidity("");
+        }
+
+        return true;
+    }
+
+    // Asociar función al submit del formulario
+    document.querySelector('form').addEventListener('submit', validarFormulario);
+</script>
+
 {% endblock %}
