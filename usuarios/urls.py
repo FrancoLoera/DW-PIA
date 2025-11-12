@@ -5,9 +5,9 @@ from . import views
 
 def cerrar_sesion(request):
     logout(request)
-    return redirect('index')  # 👈 redirige a tu página principal
+    return redirect('index')  
 
 urlpatterns = [
-    path('login/', views.login_personalizado, name='login'),
-    path('logout/', cerrar_sesion, name='cerrar_sesion'),  # 👈 aquí está el cambio
+    path('login/', views.login_personalizado, name='login_personalizado'),
+    path('logout/', cerrar_sesion, name='cerrar_sesion'),  
 ]

@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6 col-lg-4">
             <h2 class="text-center mb-4">Iniciar Sesión</h2>
-            <form method="post">
+            <form method="post" action="{% url 'login_personalizado' %}">
                 {% csrf_token %}
                 <div class="mb-3">
                     <label for="id_username" class="form-label">Usuario</label>
