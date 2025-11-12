@@ -20,336 +20,346 @@
         </nav>
     </div>
 </header>
+    <button id="darkModeToggle" class="btn btn-dark-mode">
+        <i class="bi bi-moon-fill"></i>
+    </button>
+    <!-- Botones de Zoom -->
+    <div class="zoom-controls no-zoom">
+        <button id="zoomIn" class="btn-floating"><i class="bi bi-zoom-in"></i></button>
+        <button id="zoomOut" class="btn-floating"><i class="bi bi-zoom-out"></i></button>
+    </div>
 
-    <main>
-        <!-- HERO SECTION -->
-        <section class="vh-100 hero-section d-flex align-items-center justify-content-center">
-            <div class="container p-4">
-                <div class="row align-items-center">
-                    <div class="col-12 col-md-8 text-center text-md-start">
-                        <h1 class="mb-0-md text-center text-md-start">FESTYA</h1>
-                        <p class="fs-3 fw-bold text-uppercase text-center text-md-start" style="margin-top: -20px;">Salón de Fiestas y Eventos</p>
-                        <p class="p-text pb-4 pb-md-2">Transformamos cada celebración en una experiencia única, cuidando cada detalle para que solo te dediques a disfrutar.</p>
-                        <div class="d-flex flex-column flex-md-row gap-2 align-items-center buttons-group">
-                            <a href="#contacto" class="btn btn-primary">Contáctanos<i class="bi bi-envelope ms-2"></i></a>
-                            <a href="#cotizacion" class="btn btn-secondary">Agenda tu Evento<i class="bi bi-calendar-check ms-2"></i></a>
+    <div id="site-wrap">
+        <main>
+            <!-- HERO SECTION -->
+            <section class="vh-100 hero-section d-flex align-items-center justify-content-center">
+                <div class="container p-4">
+                    <div class="row align-items-center">
+                        <div class="col-12 col-md-8 text-center text-md-start">
+                            <h1 class="mb-0-md text-center text-md-start">FESTYA</h1>
+                            <p class="fs-3 fw-bold text-uppercase text-center text-md-start" style="margin-top: -20px;">Salón de Fiestas y Eventos</p>
+                            <p class="p-text pb-4 pb-md-2">Transformamos cada celebración en una experiencia única, cuidando cada detalle para que solo te dediques a disfrutar.</p>
+                            <div class="d-flex flex-column flex-md-row gap-2 align-items-center buttons-group">
+                                <a href="#contacto" class="btn btn-primary">Contáctanos<i class="bi bi-envelope ms-2"></i></a>
+                                <a href="#cotizacion" class="btn btn-secondary">Agenda tu Evento<i class="bi bi-calendar-check ms-2"></i></a>
+                            </div>
+                        </div>
+                        <div class="hero-image-col col-12 col-md-4 position-relative">
+                            <div class="hero-image-container position-relative">
+                                <img src="{% static 'imgs/payaso - img.png' %}" class="hero-image active img-fluid" alt="Payaso">
+                                <img src="{% static 'imgs/jester - img.png' %}" class="hero-image img-fluid" alt="Bufón 2">
+                            </div>
                         </div>
                     </div>
-                    <div class="hero-image-col col-12 col-md-4 position-relative">
-                        <div class="hero-image-container position-relative">
-                            <img src="{% static 'imgs/payaso - img.png' %}" class="hero-image active img-fluid" alt="Payaso">
-                            <img src="{% static 'imgs/jester - img.png' %}" class="hero-image img-fluid" alt="Bufón 2">
+                </div>
+            </section>
+            <!-- ABOUT SECTION -->
+            <section class="about-section d-flex align-items-center" id="nosotros">
+                <div class="container ps-4 ps-md-0 ps-lg-4 pe-4 pe-md-0 pe-lg-4">
+                    <div class="row gap-4 gap-lg-0">
+                        <div class="col-12 col-lg-5 col-md-12 d-flex flex-column justify-content-center">
+                            <h2 class="mb-3 text-center text-lg-start">Sobre Nosotros</h2>
+                            <p class="p-text mb-0 mb-lg-4"><b>Festya</b> es una empresa dedicada a brindar <b>diversión y entretenimiento</b> para todo tipo de eventos. Nuestro objetivo es convertir cada celebración en una experiencia inolvidable, ofreciendo shows, animadores y servicios pensados para adaptarse a cualquier ocasión.<br><br>
+                            Contamos con un equipo creativo y profesional que se encarga de llevar alegría, energía y un ambiente único a cada fiesta. En <b>Festya</b>, creemos que <b>cada evento merece ser especial</b>, por eso trabajamos para hacer que cada momento esté lleno de emoción y buenos recuerdos.</p>
+                            <a href="#contacto" class="btn btn-primary align-self-start d-none d-lg-inline-block">Contáctanos<i class="bi bi-envelope ms-2"></i></a>
+                        </div>
+                        <div class="col-12 col-lg-7 col-md-12 d-flex flex-column justify-content-center ps-lg-5">
+                            <!-- Tarjetas -->
+                            <div class="d-flex flex-column flex-md-row justify-content-center gap-4 mb-4">
+                                <div class="card-about d-flex flex-column align-items-center p-4">
+                                    <i class="fa-solid fa-bullseye display-4 mt-3 mb-3"></i>
+                                    <h3>Misión</h3>
+                                    <p class="p-text">Ofrecer experiencias únicas y llenas de diversión a través de shows y servicios de entretenimiento que hagan de cada evento un momento especial.</p>
+                                </div>
+                                <div class="card-about d-flex flex-column align-items-center p-4">
+                                    <i class="fa-solid fa-eye display-4 mt-3 mb-3"></i>
+                                    <h3>Visión</h3>
+                                    <p class="p-text">Ser una empresa reconocida por la calidad y creatividad de nuestros shows, haciendo de Festya la mejor opción para celebrar con alegría y estilo.</p>
+                                </div>
+                            </div>
+                            <!-- Valores -->
+                            <div class="d-flex flex-column flex-md-row align-items-center p-4 gap-0 gap-md-3 card-about card-about-dark">
+                                <div class="me-0 me-lg-3 d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-balloon-heart-fill display-4 mt-3 mb-3"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h3 class="text-center text-md-start">Valores</h3>
+                                    <p class="p-text mb-0">En Festya, nuestros valores reflejan la pasión y alegría con la que trabajamos. Creemos en la honestidad, el respeto y la creatividad para ofrecer experiencias únicas que transmitan felicidad y dejen recuerdos inolvidables.</p>
+                                </div>
+                            </div>
+                            <a href="#contacto" class="btn btn-primary align-self-center d-inline-block d-lg-none mt-4">Contáctanos<i class="bi bi-envelope ms-2"></i></a>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <!-- ABOUT SECTION -->
-        <section class="about-section d-flex align-items-center" id="nosotros">
-            <div class="container ps-4 ps-md-0 ps-lg-4 pe-4 pe-md-0 pe-lg-4">
-                <div class="row gap-4 gap-lg-0">
-                    <div class="col-12 col-lg-5 col-md-12 d-flex flex-column justify-content-center">
-                        <h2 class="mb-3 text-center text-lg-start">Sobre Nosotros</h2>
-                        <p class="p-text mb-0 mb-lg-4"><b>Festya</b> es una empresa dedicada a brindar <b>diversión y entretenimiento</b> para todo tipo de eventos. Nuestro objetivo es convertir cada celebración en una experiencia inolvidable, ofreciendo shows, animadores y servicios pensados para adaptarse a cualquier ocasión.<br><br>
-                        Contamos con un equipo creativo y profesional que se encarga de llevar alegría, energía y un ambiente único a cada fiesta. En <b>Festya</b>, creemos que <b>cada evento merece ser especial</b>, por eso trabajamos para hacer que cada momento esté lleno de emoción y buenos recuerdos.</p>
-                        <a href="#contacto" class="btn btn-primary align-self-start d-none d-lg-inline-block">Contáctanos<i class="bi bi-envelope ms-2"></i></a>
-                    </div>
-                    <div class="col-12 col-lg-7 col-md-12 d-flex flex-column justify-content-center ps-lg-5">
-                        <!-- Tarjetas -->
-                        <div class="d-flex flex-column flex-md-row justify-content-center gap-4 mb-4">
-                            <div class="card-about d-flex flex-column align-items-center p-4">
-                                <i class="fa-solid fa-bullseye display-4 mt-3 mb-3"></i>
-                                <h3>Misión</h3>
-                                <p class="p-text">Ofrecer experiencias únicas y llenas de diversión a través de shows y servicios de entretenimiento que hagan de cada evento un momento especial.</p>
-                            </div>
-                            <div class="card-about d-flex flex-column align-items-center p-4">
-                                <i class="fa-solid fa-eye display-4 mt-3 mb-3"></i>
-                                <h3>Visión</h3>
-                                <p class="p-text">Ser una empresa reconocida por la calidad y creatividad de nuestros shows, haciendo de Festya la mejor opción para celebrar con alegría y estilo.</p>
-                            </div>
-                        </div>
-                        <!-- Valores -->
-                        <div class="d-flex flex-column flex-md-row align-items-center p-4 gap-0 gap-md-3 card-about card-about-dark">
-                            <div class="me-0 me-lg-3 d-flex align-items-center justify-content-center">
-                                <i class="bi bi-balloon-heart-fill display-4 mt-3 mb-3"></i>
-                            </div>
-                            <div class="flex-grow-1">
-                                <h3 class="text-center text-md-start">Valores</h3>
-                                <p class="p-text mb-0">En Festya, nuestros valores reflejan la pasión y alegría con la que trabajamos. Creemos en la honestidad, el respeto y la creatividad para ofrecer experiencias únicas que transmitan felicidad y dejen recuerdos inolvidables.</p>
-                            </div>
-                        </div>
-                        <a href="#contacto" class="btn btn-primary align-self-center d-inline-block d-lg-none mt-4">Contáctanos<i class="bi bi-envelope ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- SERVICES SECTION (no sé por qué las pongo en inglés xd) -->
-        <section class="services-section d-flex align-items-center" id="shows">
-            <div class="container d-flex flex-column align-items-center justify-content-center ps-4 ps-md-0 ps-lg-4 pe-4 pe-md-0 pe-lg-4">
-                <i class="bi bi-cake2-fill display-4"></i>
-                <h2 class="text-center">Nuestros Shows y Servicios</h2>
-                <p class="p-text description-text mb-5">En Festya contamos con una gran variedad de shows diseñados para llenar de diversión cada momento. Desde animaciones infantiles hasta espectáculos temáticos, hacemos que cada celebración sea única, emocionante y llena de alegría.</p>
+            </section>
+            <!-- SERVICES SECTION (no sé por qué las pongo en inglés xd) -->
+            <section class="services-section d-flex align-items-center" id="shows">
+                <div class="container d-flex flex-column align-items-center justify-content-center ps-4 ps-md-0 ps-lg-4 pe-4 pe-md-0 pe-lg-4">
+                    <i class="bi bi-cake2-fill display-4"></i>
+                    <h2 class="text-center">Nuestros Shows y Servicios</h2>
+                    <p class="p-text description-text mb-5">En Festya contamos con una gran variedad de shows diseñados para llenar de diversión cada momento. Desde animaciones infantiles hasta espectáculos temáticos, hacemos que cada celebración sea única, emocionante y llena de alegría.</p>
 
-                <div class="row g-4 align-items-stretch justify-content-center">
-                    {% for opcion in opciones %}
-                    <div class="col-12 col-lg-4  d-flex">
-                        <div class="card-about card-services flex-fill text-center pt-5 pb-5">
-                            <h3>{{ opcion.show.nombre }}</h3>
-                            <p class="text-center w-75 mx-auto">{{ opcion.show.descripcion }}</p>
-                            <p><b>Duración:</b> {{ opcion.get_duracion_display }}</p>
-                            <p class="m-0"><b>Precio:</b> ${{ opcion.precio }}</p>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-                <a href="#cotizacion" class="btn btn-secondary align-self-center mt-4">Agenda tu Evento<i class="bi bi-calendar-check ms-2"></i></a>
-            </div>
-        </section>
-        <!-- TESTIMONIAL SECTION -->
-        <section class="testimonial-section d-flex align-items-center" id="experiencias">
-            <div class="container d-flex flex-column align-items-center justify-content-center ps-4 ps-md-0 ps-lg-4 pe-4 pe-md-0 pe-lg-4">
-                <i class="bi bi-emoji-laughing-fill display-4"></i>
-                <h2>Clientes Felices</h2>
-                <p class="p-text description-text mb-5">En Festya nos encanta ser parte de momentos únicos. Nuestros clientes comparten la alegría, diversión y magia que viven en cada evento. ¡Nada nos motiva más que ver sonrisas y buenos recuerdos!</p>
-                <div class="row g-4 align-items-stretch justify-content-center mb-3">
-                    <div class="col-12 col-lg-4 col-md-6 d-flex">
-                        <div class="card-about card-testimonial flex-fill text-center p-5">
-                            <img src="{% static 'imgs/Testimonio 1 - img.png' %}" alt="Testimonio" class="img-fluid rounded mb-2">
-                            <div class="rating text-warning mb-1">
-                                <i class="bi bi-star-fill fs-4"></i>
-                                <i class="bi bi-star-fill fs-4"></i>
-                                <i class="bi bi-star-fill fs-4"></i>
-                                <i class="bi bi-star-fill fs-4"></i>
-                                <i class="bi bi-star-half fs-4"></i>
+                    <div class="row g-4 align-items-stretch justify-content-center">
+                        {% for opcion in opciones %}
+                        <div class="col-12 col-lg-4  d-flex">
+                            <div class="card-about card-services flex-fill text-center pt-5 pb-5">
+                                <h3>{{ opcion.show.nombre }}</h3>
+                                <p class="text-center w-75 mx-auto">{{ opcion.show.descripcion }}</p>
+                                <p><b>Duración:</b> {{ opcion.get_duracion_display }}</p>
+                                <p class="m-0"><b>Precio:</b> ${{ opcion.precio }}</p>
                             </div>
-                            <p class="p-text mb-0">¡La fiesta fue increíble! Los shows de Festya hicieron que todos los invitados se divirtieran de principio a fin. Sin duda, volveríamos a contratar sus servicios.</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <a href="#cotizacion" class="btn btn-secondary align-self-center mt-4">Agenda tu Evento<i class="bi bi-calendar-check ms-2"></i></a>
+                </div>
+            </section>
+            <!-- TESTIMONIAL SECTION -->
+            <section class="testimonial-section d-flex align-items-center" id="experiencias">
+                <div class="container d-flex flex-column align-items-center justify-content-center ps-4 ps-md-0 ps-lg-4 pe-4 pe-md-0 pe-lg-4">
+                    <i class="bi bi-emoji-laughing-fill display-4"></i>
+                    <h2>Clientes Felices</h2>
+                    <p class="p-text description-text mb-5">En Festya nos encanta ser parte de momentos únicos. Nuestros clientes comparten la alegría, diversión y magia que viven en cada evento. ¡Nada nos motiva más que ver sonrisas y buenos recuerdos!</p>
+                    <div class="row g-4 align-items-stretch justify-content-center mb-3">
+                        <div class="col-12 col-lg-4 col-md-6 d-flex">
+                            <div class="card-about card-testimonial flex-fill text-center p-5">
+                                <img src="{% static 'imgs/Testimonio 1 - img.png' %}" alt="Testimonio" class="img-fluid rounded mb-2">
+                                <div class="rating text-warning mb-1">
+                                    <i class="bi bi-star-fill fs-4"></i>
+                                    <i class="bi bi-star-fill fs-4"></i>
+                                    <i class="bi bi-star-fill fs-4"></i>
+                                    <i class="bi bi-star-fill fs-4"></i>
+                                    <i class="bi bi-star-half fs-4"></i>
+                                </div>
+                                <p class="p-text mb-0">¡La fiesta fue increíble! Los shows de Festya hicieron que todos los invitados se divirtieran de principio a fin. Sin duda, volveríamos a contratar sus servicios.</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4 col-md-6 d-flex">
+                            <div class="card-about card-testimonial flex-fill text-center p-5">
+                                <img src="{% static 'imgs/Testimonio 2 - img.png' %}" alt="Testimonio" class="img-fluid rounded mb-2">
+                                <div class="rating text-warning mb-1">
+                                    <i class="bi bi-star-fill fs-4"></i>
+                                    <i class="bi bi-star-fill fs-4"></i>
+                                    <i class="bi bi-star-fill fs-4"></i>
+                                    <i class="bi bi-star-fill fs-4"></i>
+                                    <i class="bi bi-star fs-4"></i>
+                                </div>
+                                <p class="p-text mb-0">Desde el primer momento, el equipo de Festya se mostró muy profesional y atento. Cada detalle de la animación hizo que nuestra celebración fuera inolvidable.</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4 d-flex">
+                            <div class="card-about card-testimonial flex-fill text-center p-5">
+                                <img src="{% static 'imgs/Testimonio 3 - img.png' %}" alt="Testimonio" class="img-fluid rounded mb-2">
+                                <div class="rating text-warning mb-1">
+                                    <i class="bi bi-star-fill fs-4"></i>
+                                    <i class="bi bi-star-fill fs-4"></i>
+                                    <i class="bi bi-star-fill fs-4"></i>
+                                    <i class="bi bi-star-fill fs-4"></i>
+                                    <i class="bi bi-star fs-4"></i>
+                                </div>
+                                <p class="p-text mb-0">No podíamos imaginar una fiesta tan llena de alegría y energía. Gracias a Festya, cada momento estuvo lleno de diversión y buenos recuerdos.</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-4 col-md-6 d-flex">
-                        <div class="card-about card-testimonial flex-fill text-center p-5">
-                            <img src="{% static 'imgs/Testimonio 2 - img.png' %}" alt="Testimonio" class="img-fluid rounded mb-2">
-                            <div class="rating text-warning mb-1">
-                                <i class="bi bi-star-fill fs-4"></i>
-                                <i class="bi bi-star-fill fs-4"></i>
-                                <i class="bi bi-star-fill fs-4"></i>
-                                <i class="bi bi-star-fill fs-4"></i>
-                                <i class="bi bi-star fs-4"></i>
-                            </div>
-                            <p class="p-text mb-0">Desde el primer momento, el equipo de Festya se mostró muy profesional y atento. Cada detalle de la animación hizo que nuestra celebración fuera inolvidable.</p>
+                    <!-- GALLERY SECTION -->
+                    <i class="bi bi-camera2 display-4 mt-5"></i>
+                    <h2 class="mb-5 align-self-center">Galería de Recuerdos</h2>
+                    <div class="row gallery-container rounded g-3 ps-3 pe-3 pb-3"> <!-- g-3 agrega un espacio uniforme -->
+                        <div class="col-12 col-lg-4 col-md-6">
+                            <img class="gallery-img img-fluid rounded" src="{% static 'imgs/Galería 1 - img.png' %}" alt="Imagen 1">
                         </div>
-                    </div>
-                    <div class="col-12 col-lg-4 d-flex">
-                        <div class="card-about card-testimonial flex-fill text-center p-5">
-                            <img src="{% static 'imgs/Testimonio 3 - img.png' %}" alt="Testimonio" class="img-fluid rounded mb-2">
-                            <div class="rating text-warning mb-1">
-                                <i class="bi bi-star-fill fs-4"></i>
-                                <i class="bi bi-star-fill fs-4"></i>
-                                <i class="bi bi-star-fill fs-4"></i>
-                                <i class="bi bi-star-fill fs-4"></i>
-                                <i class="bi bi-star fs-4"></i>
-                            </div>
-                            <p class="p-text mb-0">No podíamos imaginar una fiesta tan llena de alegría y energía. Gracias a Festya, cada momento estuvo lleno de diversión y buenos recuerdos.</p>
+                        <div class="col-12 col-lg-4 col-md-6">
+                            <img class="gallery-img img-fluid rounded" src="{% static 'imgs/Galería 2 - img.png' %}" alt="Imagen 2">
+                        </div>
+                        <div class="col-12 col-lg-4 col-md-6">
+                            <img class="gallery-img img-fluid rounded" src="{% static 'imgs/Galería 3 - img.png' %}" alt="Imagen 3">
+                        </div>
+                        <div class="col-12 col-lg-4 col-md-6">
+                            <img class="gallery-img img-fluid rounded" src="{% static 'imgs/Galería 4 - img.png' %}" alt="Imagen 4">
+                        </div>
+                        <div class="col-12 col-lg-4 col-md-6">
+                            <img class="gallery-img img-fluid rounded" src="{% static 'imgs/Galería 5 - img.png' %}" alt="Imagen 5">
+                        </div>
+                        <div class="col-12 col-lg-4 col-md-6">
+                            <img class="gallery-img img-fluid rounded" src="{% static 'imgs/Galería 6 - img.png' %}" alt="Imagen 6">
                         </div>
                     </div>
                 </div>
-                <!-- GALLERY SECTION -->
-                <i class="bi bi-camera2 display-4 mt-5"></i>
-                <h2 class="mb-5 align-self-center">Galería de Recuerdos</h2>
-                <div class="row gallery-container rounded g-3 ps-3 pe-3 pb-3"> <!-- g-3 agrega un espacio uniforme -->
-                    <div class="col-12 col-lg-4 col-md-6">
-                        <img class="gallery-img img-fluid rounded" src="{% static 'imgs/Galería 1 - img.png' %}" alt="Imagen 1">
-                    </div>
-                    <div class="col-12 col-lg-4 col-md-6">
-                        <img class="gallery-img img-fluid rounded" src="{% static 'imgs/Galería 2 - img.png' %}" alt="Imagen 2">
-                    </div>
-                    <div class="col-12 col-lg-4 col-md-6">
-                        <img class="gallery-img img-fluid rounded" src="{% static 'imgs/Galería 3 - img.png' %}" alt="Imagen 3">
-                    </div>
-                    <div class="col-12 col-lg-4 col-md-6">
-                        <img class="gallery-img img-fluid rounded" src="{% static 'imgs/Galería 4 - img.png' %}" alt="Imagen 4">
-                    </div>
-                    <div class="col-12 col-lg-4 col-md-6">
-                        <img class="gallery-img img-fluid rounded" src="{% static 'imgs/Galería 5 - img.png' %}" alt="Imagen 5">
-                    </div>
-                    <div class="col-12 col-lg-4 col-md-6">
-                        <img class="gallery-img img-fluid rounded" src="{% static 'imgs/Galería 6 - img.png' %}" alt="Imagen 6">
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- FAQ SECTI0N -->
-        <section id="faq" class="faq-section d-flex align-items-center">
-            <div class="container">
-                <div class="d-flex flex-column px-4">
-                    <div class="text-center">
-                    <h2 class="faq-title">Preguntas Frecuentes</h2>
-                    <p class="p-text align-self-center text-center faq-description">
-                        Aquí encontrarás respuestas a las preguntas más comunes sobre nuestros servicios.
-                    </p>
-                    </div>
-                    <div class="accordion" id="accordionFAQ">
-                    <!-- Pregunta 1 -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            ¿Qué servicios ofrece Festya?
-                        </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                        data-bs-parent="#accordionFAQ">
-                        <div class="accordion-body">
-                            Festya ofrece shows, animadores, música, decoración y servicios personalizados para todo tipo de eventos.
+            <!-- FAQ SECTI0N -->
+            <section id="faq" class="faq-section d-flex align-items-center">
+                <div class="container">
+                    <div class="d-flex flex-column px-4">
+                        <div class="text-center">
+                        <h2 class="faq-title">Preguntas Frecuentes</h2>
+                        <p class="p-text align-self-center text-center faq-description">
+                            Aquí encontrarás respuestas a las preguntas más comunes sobre nuestros servicios.
+                        </p>
+                        </div>
+                        <div class="accordion" id="accordionFAQ">
+                        <!-- Pregunta 1 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                ¿Qué servicios ofrece Festya?
+                            </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionFAQ">
+                            <div class="accordion-body">
+                                Festya ofrece shows, animadores, música, decoración y servicios personalizados para todo tipo de eventos.
+                            </div>
+                            </div>
+                        </div>
+                        <!-- Pregunta 2 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                ¿Cómo puedo contratar un show?
+                            </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                            data-bs-parent="#accordionFAQ">
+                            <div class="accordion-body">
+                                Puedes contactarnos a través del formulario o por WhatsApp para agendar tu evento y personalizar tu paquete.
+                            </div>
+                            </div>
+                        </div>
+                        <!-- Pregunta 3 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                ¿Con cuánta anticipación debo reservar?
+                            </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            data-bs-parent="#accordionFAQ">
+                            <div class="accordion-body">
+                                Recomendamos reservar al menos con dos semanas de anticipación para garantizar disponibilidad.
+                            </div>
+                            </div>
+                        </div>
+                        <!-- Pregunta 4 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                ¿Festya realiza eventos fuera de la ciudad?
+                            </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                            data-bs-parent="#accordionFAQ">
+                            <div class="accordion-body">
+                                Sí, ofrecemos cobertura en distintas zonas. Solo es necesario coordinar con nuestro equipo para los detalles.
+                            </div>
+                            </div>
                         </div>
                         </div>
-                    </div>
-                    <!-- Pregunta 2 -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            ¿Cómo puedo contratar un show?
-                        </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                        data-bs-parent="#accordionFAQ">
-                        <div class="accordion-body">
-                            Puedes contactarnos a través del formulario o por WhatsApp para agendar tu evento y personalizar tu paquete.
-                        </div>
-                        </div>
-                    </div>
-                    <!-- Pregunta 3 -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            ¿Con cuánta anticipación debo reservar?
-                        </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                        data-bs-parent="#accordionFAQ">
-                        <div class="accordion-body">
-                            Recomendamos reservar al menos con dos semanas de anticipación para garantizar disponibilidad.
-                        </div>
-                        </div>
-                    </div>
-                    <!-- Pregunta 4 -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingFour">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                            ¿Festya realiza eventos fuera de la ciudad?
-                        </button>
-                        </h2>
-                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-                        data-bs-parent="#accordionFAQ">
-                        <div class="accordion-body">
-                            Sí, ofrecemos cobertura en distintas zonas. Solo es necesario coordinar con nuestro equipo para los detalles.
-                        </div>
-                        </div>
-                    </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- COTIZACIÓN SECTION -->
-        <section class="cotizacion-section d-flex align-items-center" id="cotizacion">
-            <div class="container px-4">
-                <div class="row align-items-stretch flex-lg-row-reverse flex-column-reverse flex-lg-row">
-                    <!-- Imagen lateral izquierda -->
-                    <div class="col-12 col-lg-5 d-flex justify-content-center align-items-center">
-                        <img src="{% static 'imgs/payaso - img.png' %}" alt="Cotización" class="img-fluid w-75">
+            <!-- C0TIZACI0N SECTI0N -->
+            <section class="cotizacion-section d-flex align-items-center" id="cotizacion">
+                <div class="container px-4">
+                    <div class="row align-items-stretch flex-lg-row-reverse flex-column-reverse flex-lg-row">
+                        <!-- Imagen lateral izquierda -->
+                        <div class="col-12 col-lg-5 d-flex justify-content-center align-items-center">
+                            <img src="{% static 'imgs/payaso - img.png' %}" alt="Cotización" class="cotizacion-imagen img-fluid w-75">
+                        </div>
+                        <!-- Contenido -->
+                        <div class="col-12 col-lg-7 d-flex flex-column">
+                            <div class="text-center text-lg-start mb-3">
+                                <h2 class="cotizacion-title">Agenda tu Evento</h2>
+                                <p class="p-text cotizacion-description mb-0">
+                                    Selecciona los shows que deseas para tu evento. Puedes combinar varios, 
+                                    pero la duración total no debe superar las 8 horas.
+                                </p>
+                            </div>
+                            <!-- Formulario -->
+                            <div class="cotizacion-form card-cotizacion p-4">
+                                <form id="formCotizacion" class="d-flex flex-column gap-3">
+                                    <select id="ddlShows" class="form-select">
+                                    <option value="">Selecciona un show...</option>
+                                    {% for opcion in opciones %}
+                                        <option value="{{ opcion.id }}" 
+                                                data-show="{{ opcion.show.nombre }}" 
+                                                data-duracion="{{ opcion.duracion }}"
+                                                data-horas="{{ opcion.get_duracion_display|slice:":-2" }}"
+                                                data-precio="{{ opcion.precio }}">
+                                        {{ opcion.show.nombre }} - {{ opcion.get_duracion_display }} - ${{ opcion.precio }}
+                                        </option>
+                                    {% endfor %}
+                                    </select>
+
+                                    <button type="button" id="btnAgregar" class="btn btn-primary w-100">Agregar Show</button>
+                                </form>
+                                <!-- Lista de shows seleccionados -->
+                                <div id="listaShows" class="mt-4">
+                                    <h5 class="fw-bold">Shows seleccionados:</h5>
+                                    <ul class="list-group mb-3" id="showsSeleccionados"></ul>
+                                    <p class="fw-bold fs-5 text-end">Total: $<span id="totalPrecio">0</span></p>
+                                    <p class="text-end text-muted"><small id="horas">Horas totales: <span id="totalHoras">0</span> / 8</small></p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <!-- Contenido -->
-                    <div class="col-12 col-lg-7 d-flex flex-column">
-                        <div class="text-center text-lg-start mb-3">
-                            <h2 class="cotizacion-title">Agenda tu Evento</h2>
-                            <p class="p-text cotizacion-description mb-0">
-                                Selecciona los shows que deseas para tu evento. Puedes combinar varios, 
-                                pero la duración total no debe superar las 8 horas.
+                </div>
+            </section>
+
+            <!-- C0NTACT0 SECTI0N -->
+            <section class="contact-section d-flex align-items-center" id="contacto">
+                <div class="container ps-4 ps-md-0 ps-lg-4 pe-4 pe-md-0 pe-lg-4">
+                    <div class="row g-4 align-items-stretch justify-content-center">
+
+                        <!-- Columna izquierda: mapa -->
+                        <div class="col-12 col-lg-6 d-flex flex-column justify-content-center">
+                            <h2 class="text-center text-lg-start mb-3">Encuéntranos</h2>
+                            <p class="p-text text-center text-lg-start mb-4">
+                                Estamos ubicados en una zona accesible y segura, ideal para que tus invitados lleguen sin complicaciones.
                             </p>
+                            <div class="map-container rounded">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14380.704212047725!2d-100.28113651284181!3d25.698594399999983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662954b1a885aa1%3A0x617b1cd9fd99209e!2sShow%20time!5e0!3m2!1ses-419!2smx!4v1762915645597!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
                         </div>
-                        <!-- Formulario -->
-                        <div class="cotizacion-form card-cotizacion p-4">
-                            <form id="formCotizacion" class="d-flex flex-column gap-3">
-                                <select id="ddlShows" class="form-select">
-                                <option value="">Selecciona un show...</option>
-                                {% for opcion in opciones %}
-                                    <option value="{{ opcion.id }}" 
-                                            data-show="{{ opcion.show.nombre }}" 
-                                            data-duracion="{{ opcion.duracion }}"
-                                            data-horas="{{ opcion.get_duracion_display|slice:":-2" }}"
-                                            data-precio="{{ opcion.precio }}">
-                                    {{ opcion.show.nombre }} - {{ opcion.get_duracion_display }} - ${{ opcion.precio }}
-                                    </option>
-                                {% endfor %}
-                                </select>
 
-                                <button type="button" id="btnAgregar" class="btn btn-primary w-100">Agregar Show</button>
+                        <!-- Columna derecha: formulario -->
+                        <div class="col-12 col-lg-6 d-flex flex-column justify-content-center">
+                            <h2 class="text-center text-lg-start mb-3">Contáctanos</h2>
+                            <p class="p-text text-center text-lg-start mb-4">
+                                Déjanos tus datos y con gusto nos pondremos en contacto contigo para planear tu próximo evento.
+                            </p>
+                            <form class="p-4 rounded shadow contact-form card-about">
+                                <div class="mb-3">
+                                    <label for="nombre" class="form-label fw-semibold">Nombre</label>
+                                    <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="telefono" class="form-label fw-semibold">Teléfono</label>
+                                    <input type="tel" class="form-control" id="telefono" placeholder="Ingresa tu teléfono">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="correo" class="form-label fw-semibold">Correo electrónico</label>
+                                    <input type="email" class="form-control" id="correo" placeholder="Ingresa tu correo">
+                                </div>
+                                <button type="button" class="btn btn-primary w-100" id="btnEnviar">Enviar</button>
+                                <div id="mensajeExito" class="text-center mt-3 fw-semibold" style="display: none;">Datos enviados con éxito!</div>
                             </form>
-                            <!-- Lista de shows seleccionados -->
-                            <div id="listaShows" class="mt-4">
-                                <h5 class="fw-bold">Shows seleccionados:</h5>
-                                <ul class="list-group mb-3" id="showsSeleccionados"></ul>
-                                <p class="fw-bold fs-5 text-end">Total: $<span id="totalPrecio">0</span></p>
-                                <p class="text-end text-muted"><small id="horas">Horas totales: <span id="totalHoras">0</span> / 8</small></p>
-                            </div>
                         </div>
+
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- C0NTACT0 SECTI0N -->
-        <section class="contact-section d-flex align-items-center" id="contacto">
-            <div class="container ps-4 ps-md-0 ps-lg-4 pe-4 pe-md-0 pe-lg-4">
-                <div class="row g-4 align-items-stretch justify-content-center">
-
-                    <!-- Columna izquierda: mapa -->
-                    <div class="col-12 col-lg-6 d-flex flex-column justify-content-center">
-                        <h2 class="text-center text-lg-start mb-3">Encuéntranos</h2>
-                        <p class="p-text text-center text-lg-start mb-4">
-                            Estamos ubicados en una zona accesible y segura, ideal para que tus invitados lleguen sin complicaciones.
-                        </p>
-                        <div class="map-container rounded shadow">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14380.704212047725!2d-100.28113651284181!3d25.698594399999983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662954b1a885aa1%3A0x617b1cd9fd99209e!2sShow%20time!5e0!3m2!1ses-419!2smx!4v1762915645597!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                    </div>
-
-                    <!-- Columna derecha: formulario -->
-                    <div class="col-12 col-lg-6 d-flex flex-column justify-content-center">
-                        <h2 class="text-center text-lg-start mb-3">Contáctanos</h2>
-                        <p class="p-text text-center text-lg-start mb-4">
-                            Déjanos tus datos y con gusto nos pondremos en contacto contigo para planear tu próximo evento.
-                        </p>
-                        <form class="p-4 rounded shadow contact-form card-about">
-                            <div class="mb-3">
-                                <label for="nombre" class="form-label fw-semibold">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre">
-                            </div>
-                            <div class="mb-3">
-                                <label for="telefono" class="form-label fw-semibold">Teléfono</label>
-                                <input type="tel" class="form-control" id="telefono" placeholder="Ingresa tu teléfono">
-                            </div>
-                            <div class="mb-3">
-                                <label for="correo" class="form-label fw-semibold">Correo electrónico</label>
-                                <input type="email" class="form-control" id="correo" placeholder="Ingresa tu correo">
-                            </div>
-                            <button type="button" class="btn btn-primary w-100" id="btnEnviar">Enviar</button>
-                            <div id="mensajeExito" class="text-center mt-3 fw-semibold" style="display: none;">Datos enviados con éxito!</div>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-        </section>
+            </section>
 
 
 
 
-    </main>
+        </main>
+    </div> 
     <footer>
         <div class="container">
             <div class="row p-4">
@@ -360,14 +370,8 @@
             </div>
         </div>
     </footer>
-    <button id="darkModeToggle" class="btn btn-dark-mode">
-        <i class="bi bi-moon-fill"></i>
-    </button>
-    <!-- Botones de Zoom -->
-    <div class="zoom-controls">
-        <button id="zoomIn" class="btn-floating"><i class="bi bi-zoom-in"></i></button>
-        <button id="zoomOut" class="btn-floating"><i class="bi bi-zoom-out"></i></button>
-    </div>
+       
+
 
     <!-- Scripts -->
     <script src="{% static 'js/darkmode.js' %}"></script>

@@ -2,15 +2,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const zoomInBtn = document.getElementById("zoomIn");
     const zoomOutBtn = document.getElementById("zoomOut");
 
-    // Tamaño base de fuente (usaremos esto para escalar todo el sitio)
-    let currentZoom = 100; // %
-    const maxZoom = 130;
-    const minZoom = 80;
+    let currentZoom = 100;
+    const maxZoom = 160;
+    const minZoom = 70;
     const step = 10;
 
-    // Aplica el zoom ajustando la raíz del documento (html)
     function applyZoom() {
         document.documentElement.style.fontSize = `${currentZoom}%`;
+        document.body.style.overflowX = "hidden";
+        document.documentElement.style.overflowX = "hidden";
+        document.body.style.width = "100%";
+        document.documentElement.style.width = "100%";
     }
 
     zoomInBtn.addEventListener("click", () => {
@@ -26,4 +28,9 @@ document.addEventListener("DOMContentLoaded", () => {
             applyZoom();
         }
     });
+
+    applyZoom();
 });
+
+
+

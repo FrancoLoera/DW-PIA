@@ -5,7 +5,7 @@
     --secundario-dark:   #837aae;
     --terciario:         #f4d85a;
     --terciario-light:   #fff6cd;
-    --terciario-dark:    #b39e40;
+    --terciario-dark:    #dbbc40;
     --blanco:            #fff;
     --semi-blanco:       #f8f8f8;
     --gris:              #efefef;
@@ -188,11 +188,19 @@
 
 html {
     font-size: 100%;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 body {
     font-family: 'Poppins', sans-serif;
     font-size: 1rem;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 h1 {
@@ -213,6 +221,7 @@ h3 {
 
 footer {
     background-color: var(--negro) !important;
+    flex-shrink: 0;
 }
 
 footer h3 {
@@ -553,7 +562,6 @@ footer .btn:hover {
     color: var(--blanco);
 }
 
-.map-container,
 .contact-form {
     width: 100%;
     height: 100%;
@@ -563,6 +571,46 @@ footer .btn:hover {
     box-shadow: 0 0 10px 3px var(--shadow);
     transition: all 0.3s ease;
 }
+
+.map-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;         
+  border-radius: 0.8rem;
+  overflow: hidden;
+  background: none;
+}
+
+.map-container iframe {
+  display: block;
+  width: 100%;
+  height: 25rem;
+  border: none;
+  margin: 0 auto;
+  border-radius: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .map-container iframe {
+    height: 20rem;   
+  }
+}
+
+@media (max-width: 576px) {
+  .map-container {
+    padding: 0;
+    width: 100vw;        
+    margin-left: calc(-1 * (100vw - 100%)/2);
+  }
+}
+
+/* Evita fondo negro en modo oscuro */
+[data-theme="dark"] .mapa-container {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+
 
 [data-theme="dark"] .contact-form {
     background-color: var(--primario);
@@ -598,6 +646,7 @@ footer .btn:hover {
     background-color: transparent;
     color: var(--terciario);
 }
+
 
 /* COTIZACIÓN SECTION */
 .cotizacion-section {
@@ -705,6 +754,13 @@ footer .btn:hover {
     color: var(--terciario);
 }
 
+@media (max-width: 992px) {
+  .cotizacion-imagen {
+    display: none;
+  }
+}
+
+
 /* FAQ SECTION */
 .faq-section {
     background-color: var(--secundario-light);
@@ -791,15 +847,48 @@ footer .btn:hover {
     color: var(--blanco);
 }
 
-/* BOTONES DE ZOOM */
+/* Wrapper que escalaremos */
+#site-wrap {
+  width: 100%;
+  transform-origin: 0 0; /* escala desde la esquina superior izquierda */
+  transition: transform 200ms cubic-bezier(.2,.8,.2,1);
+}
+
+/* Aseguramos que los controles queden fijos y no se escalen */
+.no-zoom {
+  position: fixed;
+  bottom: 7rem;
+  right: 2rem;
+  z-index: 99999;
+  transform: none !important;
+  transform-origin: center;
+  pointer-events: auto;
+  font-size: 1rem !important;
+}
+
+/* Forzamos que los hijos tampoco se escalen por herencia */
+.no-zoom, .no-zoom * {
+  transform: none !important;
+  font-size: 1rem !important;
+}
+
+/* Para que el botón darkmode tampoco se vea afectado */
+.btn-dark-mode {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 2rem;
+  z-index: 100000;
+}
+
 .zoom-controls {
     position: fixed;
-    bottom: 7rem;
-    right: 1.5rem;
+    bottom: 110px; /* 🔸 PX, no REM */
+    right: 24px;   /* 🔸 PX, no REM */
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 10px;     /* 🔸 PX, no REM */
     z-index: 9999;
+    transform: none !important;
 }
 
 .zoom-controls .btn-floating {
@@ -807,7 +896,7 @@ footer .btn:hover {
     color: var(--blanco);
     border: none;
     border-radius: 50%;
-    width: 48px;
+    width: 48px; /* PX fijos */
     height: 48px;
     display: flex;
     justify-content: center;
@@ -823,6 +912,13 @@ footer .btn:hover {
     transform: translateY(-2px);
 }
 
+/* Responsive (opcional) */
+@media (max-width: 48rem) {
+  .no-zoom { right: 1rem; bottom: 6rem; }
+  .zoom-controls .btn-floating { width: 2.4rem; height: 2.4rem; font-size:1.0rem; }
+}
+
+/* === Modo oscuro === */
 [data-theme="dark"] .zoom-controls .btn-floating {
     background-color: var(--secundario-dark);
     color: var(--terciario);
@@ -833,3 +929,143 @@ footer .btn:hover {
     color: var(--blanco);
 }
 
+#darkModeToggle {
+    position: fixed;
+    bottom: 24px;  /* píxeles fijos, no se escalan con el zoom */
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--primario);
+    color: var(--blanco);
+    border: none;
+    box-shadow: 0 0 8px 2px var(--shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 9999;
+    transition: all 0.2s ease-in-out;
+}
+
+#darkModeToggle:hover {
+    background-color: var(--terciario);
+    color: var(--negro);
+    transform: translateY(-2px);
+}
+
+/* TABLETAS (769px a 992px) */
+@media (min-width: 769px) and (max-width: 992px) {
+  
+  /* FAQ */
+  .faq-section h2 {
+    font-size: 2.2rem;
+  }
+
+  .accordion-item {
+    margin-bottom: 0.8rem;
+  }
+
+  .faq-description {
+    font-size: 0.95rem;
+    padding: 0 1.5rem;
+  }
+
+  /* COTIZACIÓN */
+  .cotizacion-section h2 {
+    font-size: 2.2rem;
+  }
+
+  .cotizacion-description {
+    font-size: 1rem;
+    padding: 0 1.5rem;
+  }
+
+  .cotizacion-form {
+    padding: 1.5rem;
+  }
+
+  /* CONTACTO */
+  .contact-section h2 {
+    font-size: 2.2rem;
+  }
+
+  .contact-section .p-text {
+    font-size: 1rem;
+    padding: 0 1.5rem;
+  }
+
+}
+
+/* TELÉFONOS (hasta 768px) */
+@media (max-width: 768px) {
+
+  /* FAQ */
+  .faq-section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .faq-section h2 {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .faq-description {
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .accordion-button {
+    font-size: 0.95rem;
+  }
+
+  /* COTIZACIÓN */
+  .cotizacion-section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .cotizacion-title {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .cotizacion-description {
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .cotizacion-form {
+    padding: 1.2rem;
+  }
+
+  .cotizacion-form select,
+  .cotizacion-form input,
+  .cotizacion-form button {
+    font-size: 0.9rem;
+  }
+
+  /* CONTACTO */
+  .contact-section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .contact-section h2 {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .contact-section .p-text {
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .contact-form {
+    padding: 1.2rem;
+  }
+}
