@@ -16,12 +16,19 @@
             <hr>
         </div>
 
-        <a href="{% url 'index' %}" class="btn btn-regresar">
-            <i class="bi bi-arrow-left-circle"></i> Regresar al menú
-        </a>
-        <a href="{% url 'cerrar_sesion' %}" class="btn btn-danger">
+        <div>
+    <a href="{% url 'index' %}" class="btn btn-regresar">
+        <i class="bi bi-arrow-left-circle"></i> Regresar al menú
+    </a>
+
+    <form action="{% url 'logout' %}" method="post" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-danger ms-2" style="border: 1px solid #dc3545;">
             <i class="bi bi-box-arrow-right"></i> Cerrar sesión
-        </a>
+        </button>
+    </form>
+</div>
+
     </div>
 
     <!-- BOTONES DE ACCIÓN -->

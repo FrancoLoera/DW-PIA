@@ -5,8 +5,9 @@
 {% block content %}
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'reservaciones/css/gestion_admin.css' %}">
-<div class="container">
 
+<div class="container">
+    <!-- ENCABEZADO -->
     <div class="header-admin">
         <div class="d-flex align-items-center">
             <img src="{% static 'reservaciones/img/LOGO.png' %}" alt="Logo">
@@ -27,11 +28,8 @@
             </form>
         </div>
     </div>
-    <div class="botones">
-    </div>
 
-
-    <div class="table-responsive">
+    <div class="table-responsive mt-4">
         <table class="table table-bordered text-center align-middle">
             <thead>
                 <tr>
@@ -49,17 +47,10 @@
                 <tr>
                     <td>{{ r.nombreCliente }}</td>
                     <td>{{ r.telefono }}</td>
-                    <td>{{ r.fechaEvento|date:"d/m/Y" }}</td>
+                    <td>{{ r.fechaEvento|date:"j \\d\\e F \\d\\e\\l Y" }}</td>
                     <td>{{ r.numInvitados }}</td>
-                    <td>
-                        {% if r.tipoEvento == 'boda' %}Boda{% endif %}
-                        {% if r.tipoEvento == 'cumpleaños' %}Cumpleaños{% endif %}
-                        {% if r.tipoEvento == 'quinceaños' %}Quinceaños{% endif %}
-                        {% if r.tipoEvento == 'corporativo' %}Evento Corporativo{% endif %}
-                        {% if r.tipoEvento == 'otro' %}Otro{% endif %}
-                    </td>
-
-                    <td>{{ r.estatus|capfirst }}</td>
+                    <td>{{ r.tipoEvento.nombre }}</td>
+                    <td>{{ r.get_estatus_display }}</td>
                     <td>
                         <a href="{% url 'actualizar_estatus_empleado' r.id %}" class="btn btn-editar btn-sm">
                             <i class="bi bi-pencil"></i> Cambiar Estatus
@@ -72,7 +63,6 @@
                 </tr>
                 {% endfor %}
             </tbody>
-
         </table>
     </div>
 </div>
