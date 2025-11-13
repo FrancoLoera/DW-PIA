@@ -1,0 +1,12 @@
+Este repositorio no incluye el entorno virtual, por lo que es necesario que en cada nuevo lugar donde se clone se haga lo siguiente:
+1- Crear entorno virtual. 
+python -m venv env
+
+2- Se ingrese al entorno virtual.
+env\Scripts\activate
+
+3- Se instale django
+pip install django
+
+4- Se instale django_extensions
+pip install django_estensions
