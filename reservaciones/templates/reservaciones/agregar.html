@@ -10,13 +10,15 @@
         <h2>Añadir Reservación</h2>
     </div>
 
-    <form method="POST" onsubmit="return validarFormulario()">
+    <form method="POST">
         {% csrf_token %}
 
         <!-- Nombre -->
         <label for="nombreCliente">Nombre del cliente:</label>
         <input type="text" name="nombreCliente" id="nombreCliente"
                pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+"
+               maxlength="100"
+               autocomplete="off"
                title="El nombre solo puede contener letras y espacios."
                required>
 
@@ -25,7 +27,9 @@
         <input type="text" name="telefono" id="telefono"
                pattern="[0-9]{10}"
                maxlength="10"
+               autocomplete="off"
                title="El teléfono debe tener exactamente 10 dígitos y solo números."
+               oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10)"
                required>
 
         <!-- Fecha del evento -->
@@ -38,6 +42,7 @@
         <label for="numInvitados">Número de invitados:</label>
         <input type="number" name="numInvitados" id="numInvitados"
                min="1" max="50"
+               autocomplete="off"
                title="El número de invitados debe ser entre 1 y 50."
                required>
 
@@ -45,12 +50,9 @@
         <label for="tipoEvento">Tipo de evento:</label>
         <select name="tipoEvento" id="tipoEvento" required>
             <option value="">Selecciona una opción</option>
-            <option value="cumpleaños">Cumpleaños</option>
-            <option value="boda">Boda</option>
-            <option value="xv">XV Años</option>
-            <option value="infantil">Evento Infantil</option>
-            <option value="corporativo">Evento Corporativo</option>
-            <option value="otro">Otro</option>
+            {% for evento in tipos_evento %}
+                <option value="{{ evento.id }}">{{ evento.nombre }}</option>
+            {% endfor %}
         </select>
 
         <!-- Estatus -->
@@ -69,30 +71,4 @@
         </div>
     </form>
 </div>
-
-<script>
-    function validarFormulario(event) {
-        const fechaEventoInput = document.querySelector('#fechaEvento');
-        const valor = fechaEventoInput.value;
-
-        if (!valor) return true;
-
-        const partes = valor.split('-'); // YYYY-MM-DD
-        const fechaEvento = new Date(partes[0], partes[1] - 1, partes[2]);
-        const hoy = new Date();
-        hoy.setHours(0, 0, 0, 0);
-
-        if (fechaEvento < hoy) {
-            fechaEventoInput.setCustomValidity("La fecha del evento no puede ser anterior a la fecha actual.");
-            fechaEventoInput.reportValidity();
-            event.preventDefault();
-            return false;
-        } else {
-            fechaEventoInput.setCustomValidity("");
-        }
-        return true;
-    }
-
-    document.querySelector('form').addEventListener('submit', validarFormulario);
-</script>
 {% endblock %}

@@ -138,3 +138,7 @@ LOGOUT_REDIRECT_URL = '/'
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 SESSION_COOKIE_AGE = 60 * 60 * 4   # cookies de 4 horas
+
+LANGUAGE_CODE = 'es-mx'
+TIME_ZONE = 'America/Mexico_City'
+USE_L10N = True

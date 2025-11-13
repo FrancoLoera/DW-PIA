@@ -52,7 +52,7 @@
                     <td>{{ r.telefono }}</td>
                     <td>{{ r.fechaEvento }}</td>
                     <td>{{ r.numInvitados }}</td>
-                    <td>{{ r.get_tipoEvento_display }}</td>
+                    <td>{{ r.tipoEvento.nombre }}</td>
                     <td>{{ r.get_estatus_display }}</td>
                     <td>
                         <a href="{% url 'actualizar_reservacion' r.id %}" class="btn btn-editar btn-sm">
