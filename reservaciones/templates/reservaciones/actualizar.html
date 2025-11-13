@@ -46,9 +46,12 @@
 
             <div class="col-md-6">
                 <label class="form-label fw-semibold text-secondary">Fecha del Evento</label>
-                <input type="date" name="fechaEvento" class="form-control"
-                       value="{{ reservacion.fechaEvento|date:'Y-m-d' }}"
-                       title="Selecciona una fecha válida para el evento." required>
+                <input type="date" name="fechaEvento" class="form-control" value="{{ reservacion.fechaEvento|date:'Y-m-d' }}"
+                    title="Selecciona una fecha válida para el evento." required>
+                {% if errores.fechaEvento %}
+                <small style="color:red;">{{ errores.fechaEvento }}</small>
+                {% endif %}
+
             </div>
 
             <div class="col-md-6">

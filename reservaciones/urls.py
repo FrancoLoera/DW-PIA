@@ -14,5 +14,5 @@ urlpatterns = [
     # (la nueva URL para el formulario del empleado):
     path('empleado/actualizar/<int:id>/', views.actualizar_estatus_empleado, name='actualizar_estatus_empleado'),
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
-
+    
 ]
