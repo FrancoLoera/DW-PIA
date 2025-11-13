@@ -220,7 +220,7 @@ h3 {
 }
 
 footer {
-    background-color: var(--negro) !important;
+    background-color: var(--gris-fuerte) !important;
     flex-shrink: 0;
 }
 
@@ -573,40 +573,22 @@ footer .btn:hover {
 }
 
 .map-container {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;         
-  border-radius: 0.8rem;
-  overflow: hidden;
-  background: none;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .map-container iframe {
-  display: block;
-  width: 100%;
-  height: 25rem;
-  border: none;
-  margin: 0 auto;
-  border-radius: 0.8rem;
-}
-
-@media (max-width: 768px) {
-  .map-container iframe {
-    height: 20rem;   
-  }
-}
-
-@media (max-width: 576px) {
-  .map-container {
-    padding: 0;
-    width: 100vw;        
-    margin-left: calc(-1 * (100vw - 100%)/2);
-  }
+    width: 100%;
+    height: 350px;
+    border: 0;
+    border-radius: 8px;
+    display: block;
 }
 
 [data-theme="dark"] .mapa-container {
-  background: none !important;
-  box-shadow: none !important;
+    background: none !important;
+    box-shadow: none !important;
 }
 
 
@@ -628,9 +610,9 @@ footer .btn:hover {
 }
 
 [data-theme="dark"] .contact-form input {
-    background-color: var(--secundario-dark);
-    color: var(--blanco);
-    border-color: var(--terciario-dark);
+    background-color: var(--secundario-light);
+    color: var(--negro);
+    border-color: var(--secundario);
 }
 
 #mensajeExito {
@@ -655,7 +637,7 @@ footer .btn:hover {
 }
 
 [data-theme="dark"] .cotizacion-section {
-    background-color: var(--primario);
+    background-color: var(--secundario-dark);
 }
 
 .cotizacion-title {
@@ -664,7 +646,7 @@ footer .btn:hover {
 }
 
 [data-theme="dark"] .cotizacion-title {
-    color: var(--terciario);
+    color: var(--secundario-light);
 }
 
 .cotizacion-description {
@@ -685,6 +667,10 @@ footer .btn:hover {
     transition: all 0.3s ease;
 }
 
+[data-theme="dark"] .cotizacion-form #horas {
+    color: white;
+}
+
 .card-cotizacion {
     background-color: var(--blanco);
     border-radius: 5px;
@@ -695,7 +681,7 @@ footer .btn:hover {
 }
 
 [data-theme="dark"] .cotizacion-form {
-    background-color: var(--secundario-dark);
+    background-color: var(--primario);
     color: var(--blanco);
 }
 
@@ -713,8 +699,8 @@ footer .btn:hover {
 
 [data-theme="dark"] .cotizacion-form select {
     border: 2px solid var(--terciario);
-    color: var(--blanco);
-    background-color: var(--primario);
+    color: var(--negro);
+    background-color: var(--gris);
 }
 
 .cotizacion-form ul li {
@@ -736,7 +722,7 @@ footer .btn:hover {
 }
 
 [data-theme="dark"] .cotizacion-form ul li:hover {
-    background-color: var(--terciario-dark);
+    background-color: var(--terciario);
     color: var(--negro);
 }
 
@@ -749,14 +735,22 @@ footer .btn:hover {
     transition: color 0.2s;
 }
 
+[data-theme="dark"] .btn-remove {
+    color: var(--blanco);
+}
+
+[data-theme="dark"] .cotizacion-form ul li:hover .btn-remove {
+    color: var(--negro);
+}
+
 .btn-remove:hover {
     color: var(--terciario);
 }
 
 @media (max-width: 992px) {
-  .cotizacion-imagen {
-    display: none;
-  }
+    .cotizacion-imagen {
+        display: none;
+    }
 }
 
 
@@ -832,44 +826,44 @@ footer .btn:hover {
 }
 
 [data-theme="dark"] .accordion-button {
-    background-color: var(--secundario-dark);
-    color: var(--blanco);
+    background-color: var(--terciario);
+    color: var(--negro);
 }
 
 [data-theme="dark"] .accordion-button:hover {
-    background-color: var(--terciario-dark);
+    background-color: var(--secundario);
 }
 
 [data-theme="dark"] .accordion-button:not(.collapsed) {
-    background-color: var(--terciario-dark);
+    background-color: var(--secundario);
     color: var(--negro);
 }
 
 [data-theme="dark"] .accordion-body {
-    background-color: var(--primario);
+    background-color: var(--gris-fuerte);
     color: var(--blanco);
 }
 
 /* Wrapper que escalaremos */
 #site-wrap {
-  width: 100%;
-  transform-origin: 0 0; /* escala desde la esquina superior izquierda */
-  transition: transform 200ms cubic-bezier(.2,.8,.2,1);
+    width: 100%;
+    transform-origin: 0 0; /* escala desde la esquina superior izquierda */
+    transition: transform 200ms cubic-bezier(.2,.8,.2,1);
 }
 
 /* Z00M */
 .no-zoom {
-  position: fixed;
-  bottom: 7rem;
-  right: 2rem;
-  z-index: 99999;
-  transform: none !important;
-  transform-origin: center;
-  pointer-events: auto;
+    position: fixed;
+    bottom: 7rem;
+    right: 2rem;
+    z-index: 99999;
+    transform: none !important;
+    transform-origin: center;
+    pointer-events: auto;
 }
 
 .no-zoom, .no-zoom * {
-  font-size: 24px !important;
+    font-size: 24px !important;
 }
 
 .zoom-controls {
@@ -932,115 +926,111 @@ footer .btn:hover {
 }
 
 @media (min-width: 769px) and (max-width: 992px) {
-  
+    .faq-section h2 {
+        font-size: 2.2rem;
+    }
 
-  .faq-section h2 {
-    font-size: 2.2rem;
-  }
+    .accordion-item {
+        margin-bottom: 0.8rem;
+    }
 
-  .accordion-item {
-    margin-bottom: 0.8rem;
-  }
+    .faq-description {
+        font-size: 0.95rem;
+        padding: 0 1.5rem;
+    }
 
-  .faq-description {
-    font-size: 0.95rem;
-    padding: 0 1.5rem;
-  }
+    /* COTIZACIÓN */
+    .cotizacion-section h2 {
+        font-size: 2.2rem;
+    }
 
-  /* COTIZACIÓN */
-  .cotizacion-section h2 {
-    font-size: 2.2rem;
-  }
+    .cotizacion-description {
+        font-size: 1rem;
+        padding: 0 1.5rem;
+    }
 
-  .cotizacion-description {
-    font-size: 1rem;
-    padding: 0 1.5rem;
-  }
+    .cotizacion-form {
+        padding: 1.5rem;
+    }
 
-  .cotizacion-form {
-    padding: 1.5rem;
-  }
+    /* CONTACTO */
+    .contact-section h2 {
+        font-size: 2.2rem;
+    }
 
-  /* CONTACTO */
-  .contact-section h2 {
-    font-size: 2.2rem;
-  }
-
-  .contact-section .p-text {
-    font-size: 1rem;
-    padding: 0 1.5rem;
-  }
+    .contact-section .p-text {
+        font-size: 1rem;
+        padding: 0 1.5rem;
+    }
 
 }
 
 @media (max-width: 768px) {
+    .faq-section {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
 
-  /* FAQ */
-  .faq-section {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
+    .faq-section h2 {
+        font-size: 1.8rem;
+        text-align: center;
+    }
 
-  .faq-section h2 {
-    font-size: 1.8rem;
-    text-align: center;
-  }
+    .faq-description {
+        font-size: 0.9rem;
+        text-align: center;
+        padding: 0 1rem;
+    }
 
-  .faq-description {
-    font-size: 0.9rem;
-    text-align: center;
-    padding: 0 1rem;
-  }
+    .accordion-button {
+        font-size: 0.95rem;
+    }
 
-  .accordion-button {
-    font-size: 0.95rem;
-  }
+    /* COTIZACIÓN */
+    .cotizacion-section {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
 
-  /* COTIZACIÓN */
-  .cotizacion-section {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
+    .cotizacion-title {
+        font-size: 1.8rem;
+        text-align: center;
+    }
 
-  .cotizacion-title {
-    font-size: 1.8rem;
-    text-align: center;
-  }
+    .cotizacion-description {
+        font-size: 0.9rem;
+        text-align: center;
+        padding: 0 1rem;
+    }
 
-  .cotizacion-description {
-    font-size: 0.9rem;
-    text-align: center;
-    padding: 0 1rem;
-  }
+    .cotizacion-form {
+        padding: 1.2rem;
+    }
 
-  .cotizacion-form {
-    padding: 1.2rem;
-  }
+    .cotizacion-form select,
+    .cotizacion-form input,
+    .cotizacion-form button {
+        font-size: 0.9rem;
+    }
 
-  .cotizacion-form select,
-  .cotizacion-form input,
-  .cotizacion-form button {
-    font-size: 0.9rem;
-  }
+    /* CONTACTO */
+    .contact-section {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
 
-  /* CONTACTO */
-  .contact-section {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
+    .contact-section h2 {
+        font-size: 1.8rem;
+        text-align: center;
+    }
 
-  .contact-section h2 {
-    font-size: 1.8rem;
-    text-align: center;
-  }
+    .contact-section .p-text {
+        font-size: 0.9rem;
+        text-align: center;
+        padding: 0 1rem;
+    }
 
-  .contact-section .p-text {
-    font-size: 0.9rem;
-    text-align: center;
-    padding: 0 1rem;
-  }
-
-  .contact-form {
-    padding: 1.2rem;
-  }
+    .contact-form {
+        padding: 1.2rem;
+    }
 }

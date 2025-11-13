@@ -15,7 +15,6 @@
                 <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="#experiencias">Experiencias</a></li>
                 <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="#cotizacion">Cotización</a></li>
                 <li class="nav-item"><a class="nav-link text-dark fw-semibold" href="#contacto">Contacto</a></li>
-                
             </ul>
         </nav>
     </div>
@@ -308,8 +307,9 @@
                         <p class="p-text text-center text-lg-start mb-4">
                             Estamos ubicados en una zona accesible y segura, ideal para que tus invitados lleguen sin complicaciones.
                         </p>
-                        <div class="map-container rounded">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14380.704212047725!2d-100.28113651284181!3d25.698594399999983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662954b1a885aa1%3A0x617b1cd9fd99209e!2sShow%20time!5e0!3m2!1ses-419!2smx!4v1762915645597!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <div class="map-container rounded d-flex align-items-center justify-content-center">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14380.704212047725!2d-100.28113651284181!3d25.698594399999983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662954b1a885aa1%3A0x617b1cd9fd99209e!2sShow%20time!5e0!3m2!1ses-419!2smx!4v1762915645597!5m2!1ses-419!2smx" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
                         </div>
                     </div>
                     <!-- Columna derecha: formulario -->
@@ -318,21 +318,21 @@
                         <p class="p-text text-center text-lg-start mb-4">
                             Déjanos tus datos y con gusto nos pondremos en contacto contigo para planear tu próximo evento.
                         </p>
-                        <form class="p-4 rounded shadow contact-form card-about">
+                        <form class="p-4 rounded shadow contact-form" id="formContacto">
                             <div class="mb-3">
                                 <label for="nombre" class="form-label fw-semibold">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre">
+                                <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre" maxlength="50" required>
                             </div>
                             <div class="mb-3">
                                 <label for="telefono" class="form-label fw-semibold">Teléfono</label>
-                                <input type="tel" class="form-control" id="telefono" placeholder="Ingresa tu teléfono">
+                                <input type="tel" class="form-control" id="telefono" placeholder="Ingresa tu teléfono" pattern="^[0-9]{10}$" maxlength="10" required>
                             </div>
                             <div class="mb-3">
                                 <label for="correo" class="form-label fw-semibold">Correo electrónico</label>
-                                <input type="email" class="form-control" id="correo" placeholder="Ingresa tu correo">
+                                <input type="email" class="form-control" id="correo" placeholder="Ingresa tu correo" required>
                             </div>
-                            <button type="button" class="btn btn-primary w-100" id="btnEnviar">Enviar</button>
-                            <div id="mensajeExito" class="text-center mt-3 fw-semibold" style="display: none;">Datos enviados con éxito!</div>
+                            <button type="submit" class="btn btn-primary w-100" id="btnEnviar">Enviar</button>
+                            <div id="mensajeExito" class="text-center mt-3 fw-semibold" style="display: none;">¡Datos enviados con éxito!</div>
                         </form>
                     </div>
                 </div>
@@ -364,6 +364,8 @@
     <!-- Scripts -->
     <script src="{% static 'js/darkmode.js' %}"></script>
     <script src="{% static 'js/zoom.js' %}"></script>
+
+    <!-- Script para cambiar imagen en hero section -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const images = document.querySelectorAll(".hero-image");
@@ -376,6 +378,34 @@
             }, 4000);
         });
     </script>
+
+    <!-- Script para cambiar el color dl header -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sections = document.querySelectorAll("section[id]");
+            const navLinks = document.querySelectorAll(".nav-link");
+
+            window.addEventListener("scroll", () => {
+                let current = "";
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.offsetHeight;
+                    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                        current = section.getAttribute("id");
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove("active");
+                    if (link.getAttribute("href") === "#" + current) {
+                        link.classList.add("active");
+                    }
+                });
+            });
+        });
+    </script>
+
+
     <script>
     document.addEventListener('DOMContentLoaded', function() {
     const items = document.querySelectorAll('#showsCarousel .carousel-item');
@@ -384,12 +414,10 @@
         const minPerSlide = 3;
         let next = el.nextElementSibling;
 
-        // si no hay siguiente, volver al primero
         for (let i = 1; i < minPerSlide; i++) {
         if (!next) {
             next = items[0];
         }
-        // clonar el contenido del siguiente y agregarlo al actual
         let cloneChild = next.querySelector('.col-md-4').cloneNode(true);
         el.appendChild(cloneChild);
         next = next.nextElementSibling;
@@ -397,6 +425,7 @@
     });
     });
     </script>
+
     <script>
     document.addEventListener('DOMContentLoaded', () => {
         const ddl = document.getElementById('ddlShows');
@@ -406,7 +435,6 @@
         const totalHoras = document.getElementById('totalHoras');
         let shows = [];
 
-        // Limpia el texto y lo convierte a decimal (por ejemplo: "1 hora y 30 minutos" → 1.5)
         function limpiarYConvertirHoras(texto) {
             if (!texto) return { texto: '0:00', decimal: 0 };
             texto = texto.toLowerCase().trim();
@@ -414,15 +442,12 @@
             let horas = 0;
             let minutos = 0;
 
-            // Detectar horas
             const matchHoras = texto.match(/(\d+)\s*h/);
             if (matchHoras) horas = parseInt(matchHoras[1]);
 
-            // Detectar minutos
             const matchMinutos = texto.match(/(\d+)\s*m/);
             if (matchMinutos) minutos = parseInt(matchMinutos[1]);
 
-            // Si no hay formato "1 hora y 30 minutos", puede venir como "1:30"
             if (texto.includes(':')) {
                 const [h, m] = texto.split(':').map(v => parseInt(v) || 0);
                 horas = h;
@@ -443,20 +468,17 @@
             const datos = limpiarYConvertirHoras(option.dataset.horas);
             const precio = parseFloat(option.dataset.precio);
 
-            // Evitar duplicados
             if (shows.some(s => s.nombre === nombreShow)) {
                 alert('Este show ya está en la lista.');
                 return;
             }
 
-            // Validar límite de 8 horas
             const totalActual = shows.reduce((sum, s) => sum + s.horasDecimal, 0);
             if (totalActual + datos.decimal > 8) {
                 alert('No puedes agregar más de 8 horas en total.');
                 return;
             }
 
-            // Agregar show
             shows.push({
                 id: option.value,
                 nombre: nombreShow,
@@ -486,9 +508,8 @@
             });
 
             totalPrecio.textContent = total.toFixed(2);
-            totalHoras.textContent = horas.toFixed(1); // solo un decimal, ej. 1.5
+            totalHoras.textContent = horas.toFixed(1); 
 
-            // Botones para eliminar
             document.querySelectorAll('.btn-remove').forEach(btn => {
                 btn.addEventListener('click', e => {
                     const i = e.target.dataset.index;
@@ -501,13 +522,20 @@
     </script>
     <script>
     document.addEventListener("DOMContentLoaded", () => {
-        const boton = document.getElementById("btnEnviar");
+        const form = document.getElementById("formContacto");
         const mensaje = document.getElementById("mensajeExito");
-        boton.addEventListener("click", () => {
-            mensaje.style.display = "block";
-            setTimeout(() => {
-                mensaje.style.display = "none";
-            }, 5000);
+
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            if (form.checkValidity()) {
+                mensaje.style.display = "block";
+                setTimeout(() => {
+                    mensaje.style.display = "none";
+                }, 5000);
+                form.reset();
+            } else {
+                form.reportValidity();
+            }
         });
     });
     </script>
