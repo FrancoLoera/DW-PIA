@@ -162,3 +162,11 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background-color: #b25dff;
 }
+
+.btn-outline-danger {
+    transition: ease 0.4s;
+}
+
+.btn-outline-danger:hover {
+    transform: translateY(-5px);
+}

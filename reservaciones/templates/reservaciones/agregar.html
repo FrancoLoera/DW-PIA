@@ -35,7 +35,7 @@
         <input type="date" name="fechaEvento" id="fechaEvento" title="Selecciona una fecha válida para el evento."
             required>
         {% if errores.fechaEvento %}
-        <small style="color:red;">{{ errores.fechaEvento }}</small>
+        <small style="color:red;">{{ errores.fechaEvento }}<br></small>
         {% endif %}
 
         <!-- Número de invitados -->

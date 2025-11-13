@@ -17,9 +17,6 @@
         </div>
 
         <div>
-    <a href="{% url 'index' %}" class="btn btn-regresar">
-        <i class="bi bi-arrow-left-circle"></i> Regresar al menú
-    </a>
 
     <form action="{% url 'logout' %}" method="post" style="display: inline;">
         {% csrf_token %}
